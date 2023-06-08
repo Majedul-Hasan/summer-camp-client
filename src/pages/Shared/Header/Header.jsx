@@ -1,6 +1,7 @@
 import { FaShoppingCart } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import logo from '../../../assets/letnja-skola.png';
+import logoDark from '../../../assets/letnja-skola-dark.png';
 
 import useAuth from '../../../hooks/useAuth';
 
@@ -98,7 +99,7 @@ const NavBar = () => {
           <a className='btn btn-ghost normal-case text-xl'>
             <img
               className='h-full'
-              src={logo}
+              src={isDarkMode ? logoDark : logo}
               alt=''
             />
           </a>
