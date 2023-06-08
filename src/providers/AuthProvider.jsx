@@ -77,13 +77,13 @@ const AuthProvider = ({ children }) => {
     };
   }, []);
 
-  // useEffect(() => {
-  //   if (theme === 'dark') {
-  //     document.documentElement.classList.add('dark');
-  //   } else {
-  //     document.documentElement.classList.remove('dark');
-  //   }
-  // }, [theme]);
+  useEffect(() => {
+    if (isDarkMode) {
+      document.documentElement.classList.add('bg-black');
+    } else {
+      document.documentElement.classList.remove('bg-black');
+    }
+  }, [isDarkMode]);
 
   const authInfo = {
     user,
