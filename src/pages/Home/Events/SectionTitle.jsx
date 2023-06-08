@@ -4,7 +4,7 @@ const SectionTitle = () => {
   return (
     <div className='flex justify-between items-center my-4'>
       <div>
-        <h2 className='text-2xl dark:text-orange-400 font-bold '>Events</h2>
+        <h2 className='text-3xl dark:text-orange-400 font-bold '>Events</h2>
         <p className=' dark:text-orange-100 '>
           Upcoming Education Events to feed your brain.
         </p>

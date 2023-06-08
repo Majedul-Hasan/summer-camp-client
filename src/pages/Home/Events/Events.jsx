@@ -3,7 +3,7 @@ import SectionTitle from './SectionTitle';
 
 const Events = () => {
   return (
-    <div className='border-t-2 py-10 my-8'>
+    <div className='border-t-2 pt-10 my-8'>
       <SectionTitle></SectionTitle>
       <div>
         <EventCard />
