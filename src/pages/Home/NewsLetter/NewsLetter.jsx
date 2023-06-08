@@ -1,7 +1,4 @@
-import useAuth from '../../../hooks/useAuth';
-
 const NewsLetter = () => {
-  const { isDarkMode } = useAuth();
   return (
     <section className='flex py-10 my-8 gap-4 border-y-2 items-center dark:text-blue-200 '>
       <div className='flex-1'>

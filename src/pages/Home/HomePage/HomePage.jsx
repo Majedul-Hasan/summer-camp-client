@@ -1,6 +1,7 @@
 import { Helmet } from 'react-helmet-async';
 import BannerSlider from '../BannerSlider/BannerSlider';
 import NewsLetter from '../NewsLetter/NewsLetter';
+import Testimonials from '../Testimonials/Testimonials';
 
 const HomePage = () => {
   return (
@@ -9,6 +10,7 @@ const HomePage = () => {
         <title>summerCampLang | Home</title>
       </Helmet>
       <BannerSlider />
+      <Testimonials />
       <NewsLetter />
     </>
   );
