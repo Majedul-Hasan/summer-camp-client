@@ -29,17 +29,26 @@ const Footer = () => {
           </div>
           <div>
             <span className='footer-title'>Languages</span>
-            <a className='link link-hover'>Chinese </a>
-            <a className='link link-hover'>Spanish </a>
+            <a className='link link-hover'>Chinese</a>
+            <a className='link link-hover'>Spanish</a>
             <a className='link link-hover'>English</a>
             <a className='link link-hover'>Arabic</a>
+            <a className='link link-hover'>Hindi</a>
+            <a className='link link-hover'>Bengali</a>
+            <a className='link link-hover'>Portuguese</a>
+            {/* <a className='link link-hover'>Russian</a>
+            <a className='link link-hover'>Japanese</a> */}
           </div>
           <div>
             <span className='footer-title'>School</span>
             <a className='link link-hover'>About us</a>
             <a className='link link-hover'>Contact</a>
             <a className='link link-hover'>Become instructor </a>
-            <a className='link link-hover'>Press kit</a>
+            <a
+              href='https://summer-camp-server-majedul-hasan.vercel.app'
+              className='link link-hover'>
+              documentation
+            </a>
             <a className='link link-hover'>Terms of use</a>
             <a className='link link-hover'>Privacy policy</a>
             <a className='link link-hover'>Cookie policy</a>
