@@ -5,10 +5,10 @@ import logo from '../../../assets/letnja-skola.png';
 import useAuth from '../../../hooks/useAuth';
 
 const NavBar = () => {
-  const { user, logOut, theme, setTheme } = useAuth();
-  console.log(theme);
+  const { user, logOut, setIsDarkMode, isDarkMode } = useAuth();
+  console.log(isDarkMode);
   const handleThemeSwitch = () => {
-    setTheme(theme === 'dark' ? 'light' : 'dark');
+    setIsDarkMode((darkMode) => !darkMode);
   };
 
   const handleLogOut = () => {
@@ -37,11 +37,11 @@ const NavBar = () => {
       </li> */}
       <li>
         <Link to='/dashboard/mycart'>
-          <button className='btn gap-2'>
-            <FaShoppingCart></FaShoppingCart>
-            {/* <div className='badge badge-secondary'>+{0}</div> */}
-            <div className='badge badge-secondary'>+{0}</div>
-          </button>
+          {/* <button className='btn gap-2'> */}
+          <FaShoppingCart></FaShoppingCart>
+          {/* <div className='badge badge-secondary'>+{0}</div> */}
+          <div className='badge badge-secondary'>+{0}</div>
+          {/* </button> */}
         </Link>
       </li>
       {user ? (
@@ -69,7 +69,7 @@ const NavBar = () => {
 
   return (
     <>
-      <div className='navbar fixed z-10 bg-opacity-30 max-w-screen-xl bg-black text-white'>
+      <div className='navbar bg-base-100 font-semibold dark:bg-black dark:text-sky-200 '>
         <div className='navbar-start'>
           <div className='dropdown'>
             <label
@@ -91,11 +91,17 @@ const NavBar = () => {
             </label>
             <ul
               tabIndex={0}
-              className='menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52'>
+              className='menu menu-sm dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52'>
               {navOptions}
             </ul>
           </div>
-          <a className='btn btn-ghost normal-case text-xl'>Bistro Boss</a>
+          <a className='btn btn-ghost normal-case text-xl'>
+            <img
+              className='h-full'
+              src={logo}
+              alt=''
+            />
+          </a>
         </div>
         <div className='navbar-center hidden lg:flex'>
           <ul className='menu menu-horizontal px-1'>{navOptions}</ul>
@@ -104,10 +110,9 @@ const NavBar = () => {
           <button
             type='button'
             onClick={handleThemeSwitch}
-            className='  bg-indigo-500 text-lg p-2 rounded-md mx-3'>
-            {theme === 'dark' ? '🌙' : '🌞'}
+            className=' bg-black  dark:bg-blue-300 text-lg p-2 rounded-md mx-3'>
+            {isDarkMode ? '🌙' : '🌞'}
           </button>
-          ;<a className='btn'>Get started</a>
         </div>
       </div>
     </>

@@ -20,7 +20,7 @@ const googleProvider = new GoogleAuthProvider();
 const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
-	const [theme, setTheme] = useState(null);
+  const [isDarkMode, setIsDarkMode] = useState(false);
 
   const createUser = (email, password) => {
     setLoading(true);
@@ -49,9 +49,9 @@ const AuthProvider = ({ children }) => {
   };
   useEffect(() => {
     if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-      setTheme('dark');
+      setIsDarkMode(true);
     } else {
-      setTheme('light');
+      setIsDarkMode(false);
     }
   }, []);
 
@@ -77,13 +77,13 @@ const AuthProvider = ({ children }) => {
     };
   }, []);
 
-  useEffect(() => {
-    if (theme === 'dark') {
-      document.documentElement.classList.add('dark');
-    } else {
-      document.documentElement.classList.remove('dark');
-    }
-  }, [theme]);
+  // useEffect(() => {
+  //   if (theme === 'dark') {
+  //     document.documentElement.classList.add('dark');
+  //   } else {
+  //     document.documentElement.classList.remove('dark');
+  //   }
+  // }, [theme]);
 
   const authInfo = {
     user,
@@ -93,8 +93,8 @@ const AuthProvider = ({ children }) => {
     logOut,
     updateUserProfile,
     googleSignIn,
-    setTheme,
-    theme,
+    isDarkMode,
+    setIsDarkMode,
   };
 
   return (
