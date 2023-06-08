@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unescaped-entities */
 // Import Swiper React components
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { FreeMode, Pagination } from 'swiper';
@@ -9,7 +10,13 @@ import 'swiper/css/pagination';
 
 const Testimonials = () => {
   return (
-    <div className='py-10 border-y-2'>
+    <div className='py-10 border-t-2'>
+      <div className='text-center '>
+        <h2 className='text-2xl my-3 font-bold dark:text-orange-300 '>
+          What People Say
+        </h2>
+        <p className='dark:text-orange-100 '> How real people said about us</p>
+      </div>
       <Swiper
         slidesPerView={3}
         spaceBetween={30}
