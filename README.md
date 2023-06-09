@@ -85,7 +85,7 @@ Read the tasks carefully.
 
     <br/>
 
-2. Make sure to keep the navbar and footer **on all the pages except on the 404 page**. Create a good, stylish, and meaningful footer. (including website logo or name or both, copyright, some contact information, Address etc.)
+2. Make sure to keep the navbar and footer **on all the pages except on the 404 page**. Create a good, stylish, and meaningful footer. (including website logo or name or both, copyright, some contact information, Address etc.) ✅
 
 <br/>
 
@@ -338,7 +338,10 @@ Show all approved classes on this page. Each Class will have the following:
 - Your client-side code GitHub repository
 - Your server-side code GitHub repository
 - Your live website link
-- Admin email and password.
+- Admin email and password.  
+email: admin@summer.school
+password for all users: 123456aA@
+
 
 <hr/>
 <br/>
