@@ -218,6 +218,11 @@ const SignUp = () => {
          {errors.password?.type === 'required' && (
            <p className='text-red-600'>Password is required</p>
          )}
+         {errors.image?.type === 'required' && (
+           <p className='text-red-600'>
+             If you upload photo please click on the url field
+           </p>
+         )}
 
          {errors.password?.type === 'minLength' && (
            <p className='text-red-600'>Password must be 6 characters</p>
