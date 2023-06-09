@@ -2,7 +2,7 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import reading from '../../assets/Reading a book_Monochromatic.svg';
 import { useForm } from 'react-hook-form';
 import useAuth from '../../hooks/useAuth';
-
+import { AiOutlineEye, AiOutlineEyeInvisible } from 'react-icons/Ai';
 import { useState } from 'react';
 import SocialLogin from '../Shared/SocialLogin/SocialLogin';
 import { swalWithBootstrapButtons } from '../../util/swalWithBootstrapButtons';
@@ -13,6 +13,7 @@ const Login = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const from = location.state?.from?.pathname || '/';
+  const [visible, setVisible] = useState(false);
 
   const {
     register,
@@ -61,17 +62,32 @@ const Login = () => {
             {...register('email', { required: true })}
             placeholder='Email Address'
           />
-          <input
-            className='text-sm w-full px-4 py-2 border border-solid border-gray-300 rounded mt-4'
-            type='password'
-            {...register('password', {
-              required: true,
-              minLength: 6,
-              maxLength: 20,
-              pattern: /(?=.*[A-Z])(?=.*[!@#$&*])(?=.*[0-9])(?=.*[a-z])/,
-            })}
-            placeholder='Password'
-          />
+          <div className='flex justify-between items-center'>
+            <input
+              className='text-sm w-full px-4 py-2 border border-solid border-gray-300 rounded mt-4'
+              type={visible ? 'text' : 'password'}
+              {...register('password', {
+                required: true,
+                minLength: 6,
+                maxLength: 20,
+                pattern: /(?=.*[A-Z])(?=.*[!@#$&*])(?=.*[0-9])(?=.*[a-z])/,
+              })}
+              placeholder='Password'
+            />
+
+            <input
+              id='myCheckbox'
+              type='checkbox'
+              className='mr-auto -ml-7 -mb-5  hidden'
+              onClick={() => setVisible((x) => !x)}
+            />
+            <label
+              // onClick={() => setVisible((x) => !x)}
+              htmlFor='myCheckbox'
+              className='checkbox-label mr-auto -ml-7 -mb-5'>
+              {visible ? <AiOutlineEyeInvisible /> : <AiOutlineEye />}
+            </label>
+          </div>
 
           <div className='mt-4 flex justify-between font-semibold text-sm'>
             <label className='flex text-slate-500 hover:text-slate-600 cursor-pointer'>
@@ -89,7 +105,7 @@ const Login = () => {
           </div>
           <div className='text-center md:text-left'>
             <button
-              className='mt-4 bg-blue-600 hover:bg-blue-700 px-4 py-2 text-white uppercase rounded text-xs tracking-wider'
+              className='mt-4 bg-cyan-600  hover:bg-cyan-300 hover:text-cyan-700 text-cyan-200 px-4 py-2 font-semibold uppercase rounded text-xs tracking-wider'
               type='submit'>
               Login
             </button>

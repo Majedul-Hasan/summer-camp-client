@@ -171,7 +171,12 @@ const SignUp = () => {
              {...register('phone', { required: true })}
              placeholder='Your phone number'
            />
-           <label htmlFor='gender'> Gender</label>
+           <label
+             className='mx-2 pt-3'
+             htmlFor='gender'>
+             {' '}
+             Gender
+           </label>
            <label htmlFor='gender'>
              <input
                {...register('gender', { required: true })}
@@ -179,7 +184,7 @@ const SignUp = () => {
                name='gender'
                defaultValue='male'
              />{' '}
-             male{' '}
+             Male{' '}
            </label>
            <label htmlFor='gender'>
              <input
@@ -188,7 +193,7 @@ const SignUp = () => {
                name='gender'
                defaultValue='female'
              />{' '}
-             female{' '}
+             Female{' '}
            </label>
            <label htmlFor='gender'>
              <input
@@ -203,7 +208,7 @@ const SignUp = () => {
            <div className='mt-4 flex justify-between font-semibold text-sm'></div>
            <div className='text-center md:text-left'>
              <button
-               className='mt-4 bg-blue-600 hover:bg-blue-700 px-4 py-2 text-white uppercase rounded text-xs tracking-wider'
+               className='mt-4 bg-cyan-600  hover:bg-cyan-300 hover:text-cyan-700 text-cyan-200 px-4 py-2 font-semibold uppercase rounded text-xs tracking-wider'
                type='submit'>
                Register
              </button>
