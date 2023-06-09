@@ -1,5 +1,5 @@
 import { FaShoppingCart } from 'react-icons/fa';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import logo from '../../../assets/letnja-skola.png';
 import logoDark from '../../../assets/letnja-skola-dark.png';
 
@@ -7,7 +7,8 @@ import useAuth from '../../../hooks/useAuth';
 
 const NavBar = () => {
   const { user, logOut, setIsDarkMode, isDarkMode } = useAuth();
-  console.log(isDarkMode);
+
+  // console.log(user);
   const handleThemeSwitch = () => {
     setIsDarkMode((darkMode) => !darkMode);
   };
@@ -21,29 +22,29 @@ const NavBar = () => {
   const navOptions = (
     <>
       <li>
-        <Link to='/'>Home</Link>
+        <NavLink to='/'>Home</NavLink>
       </li>
       <li>
-        <Link to='/menu'>Our Menu</Link>
+        <NavLink to='/all-courses'>All Courses</NavLink>
       </li>
       <li>
-        <Link to='/order/salad'>Order Food</Link>
+        <NavLink to='/learning'>My learnings </NavLink>
       </li>
       {/* <li>
          {isAdmin ? (
-          <Link to='/dashboard/admin-home'>Admin Dashboard</Link>
+          <NavLink to='/dashboard/admin-home'>Admin Dashboard</NavLink>
         ) : (
-          <Link to='/dashboard/user-home'>user Dashboard</Link>
+          <NavLink to='/dashboard/user-home'>user Dashboard</NavLink>
         )}
       </li> */}
       <li>
-        <Link to='/dashboard/mycart'>
+        <NavLink to='/dashboard/mycart'>
           {/* <button className='btn gap-2'> */}
           <FaShoppingCart></FaShoppingCart>
           {/* <div className='badge badge-secondary'>+{0}</div> */}
           <div className='badge badge-secondary'>+{0}</div>
           {/* </button> */}
-        </Link>
+        </NavLink>
       </li>
       {user ? (
         <>
@@ -61,7 +62,7 @@ const NavBar = () => {
       ) : (
         <>
           <li>
-            <Link to='/login'>Login</Link>
+            <NavLink to='/login'>Login</NavLink>
           </li>
         </>
       )}
@@ -92,7 +93,7 @@ const NavBar = () => {
             </label>
             <ul
               tabIndex={0}
-              className='menu menu-sm dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52'>
+              className='menu menu-sm dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52 z-50 dark:bg-slate-600'>
               {navOptions}
             </ul>
           </div>
