@@ -9,6 +9,7 @@ import PrivateRoute from './PrivateRoute';
 // import AdminHome from '../pages/Dashboard/AdminDashboard/AdminHome';
 import StudentHome from '../pages/Dashboard/StudentDashboard/StudentHome';
 import Dashboard from '../Layouts/Dashboard';
+import AdminHome from '../pages/Dashboard/AdminDashboard/AdminHome';
 
 export const router = createBrowserRouter([
   {
@@ -21,7 +22,7 @@ export const router = createBrowserRouter([
         element: <HomePage></HomePage>,
       },
       {
-        path: '/login',
+        path: 'login',
         element: <Login></Login>,
       },
       {
@@ -35,6 +36,16 @@ export const router = createBrowserRouter([
             <Dashboard></Dashboard>
           </PrivateRoute>
         ),
+        children: [
+          {
+            path: '/dashboard',
+            element: <StudentHome></StudentHome>,
+          },
+          {
+            path: 'admin',
+            element: <AdminHome />,
+          },
+        ],
       },
     ],
   },

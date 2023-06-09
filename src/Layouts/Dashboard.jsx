@@ -9,6 +9,7 @@ import {
   FaUtensils,
 } from 'react-icons/fa';
 import useAdmin from '../hooks/useAdmin';
+import { BsArrowBarRight } from 'react-icons/Bs';
 
 const Dashboard = () => {
   // TODO: load data from the server to have dynamic isAdmin based on Data
@@ -16,21 +17,22 @@ const Dashboard = () => {
   const [isAdmin] = useAdmin();
 
   return (
-    <div className='drawer drawer-mobile '>
+    <div className='drawer lg:drawer-open dark:text-blue-200'>
       <input
         id='my-drawer-2'
         type='checkbox'
         className='drawer-toggle'
       />
-      <div className='drawer-content flex flex-col mt-1 md:ml-4  w-full'>
-        <Outlet></Outlet>
+      <div className='drawer-content flex flex-col items-start justify-start'>
+        {/* Page content here */}
+        <Outlet/>
         <label
           htmlFor='my-drawer-2'
           className='btn btn-primary drawer-button lg:hidden'>
-          Open drawer
+          <BsArrowBarRight></BsArrowBarRight>
         </label>
       </div>
-      <div className='drawer-side bg-[#D1A054]'>
+      <div className='drawer-side md:pt-12'>
         <label
           htmlFor='my-drawer-2'
           className='drawer-overlay'></label>
@@ -108,3 +110,28 @@ const Dashboard = () => {
 };
 
 export default Dashboard;
+
+
+/**
+  <div className='drawer drawer-mobile '>
+        <input
+          id='my-drawer-2'
+          type='checkbox'
+          className='drawer-toggle'
+        />
+        <div className='drawer-content flex flex-col mt-1 md:ml-4  w-full'>
+          <label
+            htmlFor='my-drawer-2'
+            className='btn btn-primary drawer-button lg:hidden'>
+            Open drawer
+          </label>
+        </div>
+        <div className='drawer-side bg-[#D1A054]'>
+          <label
+            htmlFor='my-drawer-2'
+            className='drawer-overlay'></label>
+          
+        </div>
+      </div> 
+ 
+ */
