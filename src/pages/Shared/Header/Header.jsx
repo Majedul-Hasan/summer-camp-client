@@ -1,5 +1,5 @@
 import { FaShoppingCart } from 'react-icons/fa';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import logo from '../../../assets/letnja-skola.png';
 import logoDark from '../../../assets/letnja-skola-dark.png';
 
@@ -7,6 +7,7 @@ import useAuth from '../../../hooks/useAuth';
 
 const NavBar = () => {
   const { user, logOut, setIsDarkMode, isDarkMode } = useAuth();
+  const navigate = useNavigate();
 
   // console.log(user);
   const handleThemeSwitch = () => {
@@ -15,7 +16,9 @@ const NavBar = () => {
 
   const handleLogOut = () => {
     logOut()
-      .then(() => {})
+      .then(() => {
+        navigate('/');
+      })
       .catch((error) => console.log(error));
   };
 

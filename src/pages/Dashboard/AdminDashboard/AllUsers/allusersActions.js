@@ -65,11 +65,9 @@ export const userDelete = (user, refetch) => {
     .then((result) => {
       if (result.isConfirmed) {
         axiosInstance
-          .delete(
-            `${import.meta.env.VITE_API}/users/admin/${user._id}`,
-
-            { headers }
-          )
+          .delete(`${import.meta.env.VITE_API}/users/admin/${user._id}`, {
+            headers,
+          })
           .then((res) => res.json())
           .then((data) => {
             if (data.deletedCount > 0) {

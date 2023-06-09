@@ -57,6 +57,8 @@ const SignUp = () => {
            gender,
            address,
            phone,
+           joinAt: Date.now(),
+           role: 'student',
          };
          console.log('user profile info updated');
          axiosInstance.post(`${import.meta.env.VITE_API}/users`, saveUser);

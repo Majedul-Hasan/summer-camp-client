@@ -16,6 +16,7 @@ const SocialLogin = () => {
         name: loggedInUser.displayName,
         email: loggedInUser.email,
         role: 'student',
+        joinAt: Date.now(),
       };
       fetch(`${import.meta.env.VITE_API}/users`, {
         method: 'POST',
