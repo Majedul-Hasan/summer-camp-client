@@ -5,6 +5,7 @@ import useAuth from '../hooks/useAuth';
 
 const MainLayout = () => {
   const { isDarkMode } = useAuth();
+
   return (
     <div className={`${isDarkMode ? 'dark' : 'light'} test `}>
       <Header />

@@ -5,6 +5,10 @@ import HomePage from '../pages/Home/HomePage/HomePage';
 import Login from '../pages/Login/Login';
 import Signup from '../pages/Signup/Signup';
 import PageNotFound from '../pages/pageNotFound/pageNotFound';
+import PrivateRoute from './PrivateRoute';
+// import AdminHome from '../pages/Dashboard/AdminDashboard/AdminHome';
+import StudentHome from '../pages/Dashboard/StudentDashboard/StudentHome';
+import Dashboard from '../Layouts/Dashboard';
 
 export const router = createBrowserRouter([
   {
@@ -23,6 +27,14 @@ export const router = createBrowserRouter([
       {
         path: 'signup',
         element: <Signup></Signup>,
+      },
+      {
+        path: 'dashboard',
+        element: (
+          <PrivateRoute>
+            <Dashboard></Dashboard>
+          </PrivateRoute>
+        ),
       },
     ],
   },
