@@ -10,6 +10,8 @@ import PrivateRoute from './PrivateRoute';
 import StudentHome from '../pages/Dashboard/StudentDashboard/StudentHome';
 import Dashboard from '../Layouts/Dashboard';
 import AdminHome from '../pages/Dashboard/AdminDashboard/AdminHome';
+import AdminRoute from './AdminRoute';
+import AllUsers from '../pages/Dashboard/AdminDashboard/AllUsers/AllUsers';
 
 export const router = createBrowserRouter([
   {
@@ -42,8 +44,16 @@ export const router = createBrowserRouter([
             element: <StudentHome></StudentHome>,
           },
           {
-            path: 'admin',
+            path: 'admin-home',
             element: <AdminHome />,
+          },
+          {
+            path: 'allusers',
+            element: (
+              <AdminRoute>
+                <AllUsers />
+              </AdminRoute>
+            ),
           },
         ],
       },
