@@ -14,6 +14,7 @@ import AdminRoute from './AdminRoute';
 import AllUsers from '../pages/Dashboard/AdminDashboard/AllUsers/AllUsers';
 import AddNewCourse from '../pages/Dashboard/instructorDashboard/AddNewCourse/AddNewCourse';
 import AllInstructors from '../pages/AllInstructors/AllInstructors';
+import AllCourses from '../pages/AllCoueses/AllCourses';
 
 export const router = createBrowserRouter([
   {
@@ -36,6 +37,11 @@ export const router = createBrowserRouter([
       {
         path: 'all-instructors',
         element: <AllInstructors></AllInstructors>,
+        loader: () => fetch(`${import.meta.env.VITE_API}/users/instructors`),
+      },
+      {
+        path: 'all-courses',
+        element: <AllCourses></AllCourses>,
         loader: () => fetch(`${import.meta.env.VITE_API}/users/instructors`),
       },
       {
