@@ -13,8 +13,9 @@ import { BsArrowBarRight } from 'react-icons/Bs';
 
 const Dashboard = () => {
   // TODO: load data from the server to have dynamic isAdmin based on Data
-  // const Admin = true;
-  const [isAdmin] = useAdmin();
+  const isAdmin = true;
+  const [role] = useAdmin();
+  console.log(role);
 
   return (
     <div className='drawer lg:drawer-open dark:text-blue-200'>
@@ -25,7 +26,7 @@ const Dashboard = () => {
       />
       <div className='drawer-content flex flex-col items-start justify-start'>
         {/* Page content here */}
-        <Outlet/>
+        <Outlet />
         <label
           htmlFor='my-drawer-2'
           className='btn btn-primary drawer-button lg:hidden'>
@@ -37,7 +38,7 @@ const Dashboard = () => {
           htmlFor='my-drawer-2'
           className='drawer-overlay'></label>
         <ul className='menu p-4 w-80'>
-          {isAdmin ? (
+          {role?.role === 'admin' ? (
             <>
               <li>
                 <NavLink to='/dashboard/admin-home'>
@@ -62,6 +63,29 @@ const Dashboard = () => {
               <li>
                 <NavLink to='/dashboard/allusers'>
                   <FaUsers></FaUsers> All Users
+                </NavLink>
+              </li>
+            </>
+          ) : role?.role === 'instructor' ? (
+            <>
+              <li>
+                <NavLink to='/dashboard/user-home'>
+                  <FaHome></FaHome> instructor Home
+                </NavLink>
+              </li>
+              <li>
+                <NavLink to='/dashboard/reservations'>
+                  <FaCalendarAlt></FaCalendarAlt> My corses
+                </NavLink>
+              </li>
+              <li>
+                <NavLink to='/dashboard/history'>
+                  <FaWallet></FaWallet> My students
+                </NavLink>
+              </li>
+              <li>
+                <NavLink to='/dashboard/add-course'>
+                  <FaShoppingCart></FaShoppingCart> new course
                 </NavLink>
               </li>
             </>
