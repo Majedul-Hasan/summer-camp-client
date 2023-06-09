@@ -12,6 +12,8 @@ import Dashboard from '../Layouts/Dashboard';
 import AdminHome from '../pages/Dashboard/AdminDashboard/AdminHome';
 import AdminRoute from './AdminRoute';
 import AllUsers from '../pages/Dashboard/AdminDashboard/AllUsers/AllUsers';
+import AddNewCourse from '../pages/Dashboard/instructorDashboard/AddNewCourse/AddNewCourse';
+import AllInstructors from '../pages/AllInstructors/AllInstructors';
 
 export const router = createBrowserRouter([
   {
@@ -32,6 +34,11 @@ export const router = createBrowserRouter([
         element: <Signup></Signup>,
       },
       {
+        path: 'all-instructors',
+        element: <AllInstructors></AllInstructors>,
+        loader: () => fetch(`${import.meta.env.VITE_API}/users/instructors`),
+      },
+      {
         path: 'dashboard',
         element: (
           <PrivateRoute>
@@ -44,8 +51,16 @@ export const router = createBrowserRouter([
             element: <StudentHome></StudentHome>,
           },
           {
+            path: 'add-course',
+            element: <AddNewCourse></AddNewCourse>,
+          },
+          {
             path: 'admin-home',
-            element: <AdminHome />,
+            element: (
+              <AdminRoute>
+                <AdminHome />
+              </AdminRoute>
+            ),
           },
           {
             path: 'allusers',
