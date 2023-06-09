@@ -52,11 +52,7 @@ const NavBar = () => {
             <span>{user?.displayName}</span>
           </li>
           <li className='flex items-center'>
-            <span
-              onClick={handleLogOut}
-              className='btn btn-ghost'>
-              LogOut
-            </span>
+            <span onClick={handleLogOut}>LogOut</span>
           </li>
         </>
       ) : (

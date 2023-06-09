@@ -35,7 +35,8 @@ const SignUp = () => {
       axiosInstance.post(imgHostingUrl, formData).then((imgResponse) => {
         console.log(imgResponse);
         if (imgResponse.data.success) {
-          const imgURL = imgResponse.data.display_url;
+          const imgURL = imgResponse.data.data.display_url;
+
           const { name, email, gender, address, phone } = data;
           updateUserProfile(data.name, imgURL)
             .then(() => {

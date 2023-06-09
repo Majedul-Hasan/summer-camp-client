@@ -50,9 +50,9 @@
     <li> Make sure your website design is :unicorn: unique. Remember, a :unicorn: the unique project will add more value to your portfolio. :v: </li> ✅
     <li>if you give Chinese Chef and Chinese food recipes, it will only have Chinese Chef and Chinese food recipes. You cannot add recipes from other countries—only one country chef and recipe.</li>    ✅
 </li>
- - Visit ThemeForest, Dribble, google, etc., for ideas. 
+ - Visit ThemeForest, Dribble, google, etc., for ideas.  ✅
    - Visit [this blog to get free images, illustrations & animations for your website.](https://bootcamp.uxdesign.cc/free-images-and-resources-collection-for-website-c77f2fc46ce5)
-   - Try to explore component libraries other than DaisyUI. You can explore MUI, Ant design, Chakra UI etc.
+   - Try to explore component libraries other than DaisyUI. You can explore MUI, Ant design, Chakra UI etc. ✅
 <hr/>
 Read the tasks carefully.
 <hr/>
@@ -63,10 +63,10 @@ Read the tasks carefully.
 
 
 1. Focus on making the website visually appealing. Ensure that
-    - color contrast is pleasing to the eye
-    - the website does not have a **"gobindo design"**
-    - the website has proper alignment and space
-    - Do not directly copy-paste a component design from a component library you are using. You will have to customize the design. (e.g. If you are using  DaisyUi & you decided to use a card component, you will have to customize the styling of that card rather than just copy & paste it)
+    - color contrast is pleasing to the eye ✅
+    - the website does not have a **"gobindo design"** ✅
+    - the website has proper alignment and space  ✅
+    - Do not directly copy-paste a component design from a component library you are using. You will have to customize the design. (e.g. If you are using  DaisyUi & you decided to use a card component, you will have to customize the styling of that card rather than just copy & paste it)  ✅
 
     <br/>
     
@@ -79,9 +79,9 @@ Read the tasks carefully.
         ● Volunteer network
         ● Bistro Boss
         ● Doc House
-        ● Job Portal Website/ Aircnc or Any conceptual session project etc.
+        ● Job Portal Website/ Aircnc or Any conceptual session project etc.  ✅
 
-    **If any similarities are found, you will get zero(0) as a penalty.**
+   
 
     <br/>
 
