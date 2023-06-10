@@ -6,22 +6,22 @@ import logoDark from '../../../assets/letnja-skola-dark.png';
 
 import useAuth from '../../../hooks/useAuth';
 import { useState } from 'react';
+import useAdmin from '../../../hooks/useAdmin';
 
 const NavBar = () => {
   const { user, logOut, setIsDarkMode, isDarkMode } = useAuth();
   const navigate = useNavigate();
+  const [role] = useAdmin();
+  console.log(role);
   const [isOn, setIsOn] = useState(false);
-
   const toggleSwitch = () => {
     setIsOn(!isOn);
     handleThemeSwitch();
   };
-
   // console.log(user);
   const handleThemeSwitch = () => {
     setIsDarkMode((darkMode) => !darkMode);
   };
-
   const spring = {
     type: 'spring',
     stiffness: 700,
@@ -48,15 +48,17 @@ const NavBar = () => {
         <NavLink to='/all-instructors'>Instructors</NavLink>
       </li>
       <li>
-        <NavLink to='/learning'>My learnings </NavLink>
+        <NavLink to='/events'>All events </NavLink>
       </li>
-      {/* <li>
-         {isAdmin ? (
-          <NavLink to='/dashboard/admin-home'>Admin Dashboard</NavLink>
+      <li>
+        {role?.role === 'admin' ? (
+          <NavLink to='/dashboard/admin-home'>Dashboard</NavLink>
+        ) : role?.role === 'instructor' ? (
+          <NavLink to='/dashboard/instructor-home'>Dashboard</NavLink>
         ) : (
-          <NavLink to='/dashboard/user-home'>user Dashboard</NavLink>
+          <NavLink to='/dashboard/user-home'>Dashboard</NavLink>
         )}
-      </li> */}
+      </li>
       <li>
         <NavLink to='/dashboard/mycart'>
           {/* <button className='btn gap-2'> */}
@@ -69,7 +71,7 @@ const NavBar = () => {
       {user ? (
         <>
           <li>
-            <NavLink to='/dashboard'>{user?.displayName}</NavLink>
+            <NavLink to='/profile'>{user?.displayName}</NavLink>
           </li>
           <li className='flex items-center'>
             <span onClick={handleLogOut}>LogOut</span>

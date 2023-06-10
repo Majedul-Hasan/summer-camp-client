@@ -6,14 +6,13 @@ import {
   FaHome,
   FaUsers,
   FaBook,
-  FaUtensils,
 } from 'react-icons/fa';
 import useAdmin from '../hooks/useAdmin';
 import { BsArrowBarRight } from 'react-icons/Bs';
 
 const Dashboard = () => {
   // TODO: load data from the server to have dynamic isAdmin based on Data
-  const isAdmin = true;
+
   const [role] = useAdmin();
   console.log(role);
 
@@ -45,19 +44,15 @@ const Dashboard = () => {
                   <FaHome></FaHome> Admin Home
                 </NavLink>
               </li>
+
               <li>
-                <NavLink to='/dashboard/additem'>
-                  <FaUtensils></FaUtensils> Add an Items
-                </NavLink>
-              </li>
-              <li>
-                <NavLink to='/dashboard/manage-items'>
-                  <FaWallet></FaWallet> Manage Items
+                <NavLink to='/dashboard/manage-courses'>
+                  <FaWallet></FaWallet> Manage course
                 </NavLink>
               </li>
               <li>
                 <NavLink to='/dashboard/history'>
-                  <FaBook></FaBook> Manage Bookings
+                  <FaBook></FaBook> Manage history
                 </NavLink>
               </li>
               <li>

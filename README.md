@@ -198,15 +198,15 @@ Show all approved classes on this page. Each Class will have the following:
     <br/>
     ***It will be private & only an instructor can access this route.***
       
-      - **Add a Class:** This page will have a form with the following fields:
-        - Class name
-        - Class Image
-        - Instructor name (read-only) **(use the displayName value of logged in user/instructor)**
-        - Instructor email (read-only) **(use the email value of logged in user/instructor)**
-        - Available seats
-        - Price
-        - Add button
-        - When creating a class on the database, the value of the status field will be pending.
+      - **Add a Class:** This page will have a form with the following fields:  ✅
+        - Class name ✅
+        - Class Image ✅
+        - Instructor name (read-only) **(use the displayName value of logged in user/instructor)** ✅
+        - Instructor email (read-only) **(use the email value of logged in user/instructor)** ✅
+        - Available seats ✅
+        - Price ✅
+        - Add button ✅
+        - When creating a class on the database, the value of the status field will be pending. ✅
 
 
       - **My Classes:**  Show all the Classes an instructor has added after clicking the **Add button** from the **Add a Class page**. Each Class will show relevant information, including **pending/ approved/ denied** status, **Total Enrolled Students**, **Feedback** & **Update button**.
@@ -243,8 +243,8 @@ Show all approved classes on this page. Each Class will have the following:
          - **Make Admin button Action:** Update the user role as an admin.
           </br>
 
-12. Use **relevant icons** in your **dashboard menus**, animations on your website.\. You have to use **anyone** of the animation libraries below:
-    - [Framer-motion](https://www.framer.com/motion/)
+12. Use **relevant icons** in your **dashboard menus**, animations on your website.\. You have to use **anyone** of the animation libraries below: ✅
+    - [Framer-motion](https://www.framer.com/motion/)  ✅
     - [React-awesome-reveal](https://react-awesome-reveal.morello.dev/)
     - [React-spring](https://www.react-spring.dev/)
     - [React-anime](https://github.com/juliangarnier/anime)
@@ -254,36 +254,36 @@ Show all approved classes on this page. Each Class will have the following:
 
 ## :writing_hand: **Bonus Task:**
 
-1. Minimum 20 meaningful git commits on the client-side repository and 12 meaningful commits on the server-side repository. Feel free to commit as many as needed to save your progress during load-shedding.
+1. Minimum 20 meaningful git commits on the client-side repository and 12 meaningful commits on the server-side repository. Feel free to commit as many as needed to save your progress during load-shedding. ✅
 
-2. Create a readme for the client-side and write about your project.
+2. Create a readme for the client-side and write about your project. ✅
 
-    - Website name or logo or both
-    - Minimum 5 points of your website features
-    - Used packages/ technology name
-    - Live site link
+    - Website name or logo or both ✅
+    - Minimum 5 points of your website features ✅
+    - Used packages/ technology name ✅
+    - Live site link ✅
 
-3. Implementing a dark/light theme toggle for the home page. It's optional to implement the theme toggle for the entire website\.
+3. Implementing a dark/light theme toggle for the home page. It's optional to implement the theme toggle for the entire website\. ✅
 
-4. Make the home page responsive. If possible, Make your entire website responsive\. (It is ok if the table is not responsive\.) 
+4. Make the home page responsive. If possible, Make your entire website responsive\. (It is ok if the table is not responsive\.)  ✅
 
-5. Use tanstack query (react-query) in at least two places. If needed, you can use it everywhere. 
+5. Use tanstack query (react-query) in at least two places. If needed, you can use it everywhere.  ✅
 
-6. use Axios for at least two calls.
+6. use Axios for at least two calls. ✅
 
-7.  Must Use [react-hook-form](https://react-hook-form.com/) in the registration & login page. Using react hook form in another place is optional.
-
-</br>
-
-8. Use the Environment variables both on the client side & server side\.
+7.  Must Use [react-hook-form](https://react-hook-form.com/) in the registration & login page. Using react hook form in another place is optional. ✅
 
 </br>
 
-9. Implement  JWT token for Login and Registration systems (Email/ password & social login)\. You will send the token for the Dashboard routes and verify the user\.
+8. Use the Environment variables both on the client side & server side\. ✅
 
 </br>
 
-10. Create a 404 page\. Add any interesting image/ animation & a back-to-home button on the 404 page\. **Do not add header & footer in this page**\.
+9. Implement  JWT token for Login and Registration systems (Email/ password & social login)\. You will send the token for the Dashboard routes and verify the user\.  ✅
+
+</br>
+
+10. Create a 404 page\. Add any interesting image/ animation & a back-to-home button on the 404 page\. **Do not add header & footer in this page**\. ✅
 
 </br>
 
@@ -292,7 +292,7 @@ Show all approved classes on this page. Each Class will have the following:
 
 ## :writing_hand: **Optional Task:**
 
-1. (Highly Recommended) Add extra features you have learned so far, or you can explore new things. This will help you in the future to differentiate your project from others.
+1. (Highly Recommended) Add extra features you have learned so far, or you can explore new things. This will help you in the future to differentiate your project from others.   ✅
 
 2. You can explore the below packages & try to make your website more attractive:
 
@@ -301,7 +301,7 @@ Show all approved classes on this page. Each Class will have the following:
     - [React-card-flip](https://www.npmjs.com/package/react-card-flip)
     - [React-image-zoom](https://www.npmjs.com/package/react-image-zoom)
 
-3. Explore [Tanstack query mutations](https://tanstack.com/query/latest/docs/react/guides/mutations)
+3. Explore [Tanstack query mutations](https://tanstack.com/query/latest/docs/react/guides/mutations) 
 
 4. If you want, you can add an intro video button in each Class information; clicking on this button will open a modal that will play the video\.
 

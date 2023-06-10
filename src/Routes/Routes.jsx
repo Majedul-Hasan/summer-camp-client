@@ -15,6 +15,9 @@ import AllUsers from '../pages/Dashboard/AdminDashboard/AllUsers/AllUsers';
 import AddNewCourse from '../pages/Dashboard/instructorDashboard/AddNewCourse/AddNewCourse';
 import AllInstructors from '../pages/AllInstructors/AllInstructors';
 import AllCourses from '../pages/AllCoueses/AllCourses';
+import InstructorHome from '../pages/Dashboard/instructorDashboard/InstructorHome';
+import ManageCourses from '../pages/Dashboard/AdminDashboard/ManageCourses/ManageCourses';
+import History from '../pages/Dashboard/AdminDashboard/History/History';
 
 export const router = createBrowserRouter([
   {
@@ -66,6 +69,30 @@ export const router = createBrowserRouter([
             element: (
               <AdminRoute>
                 <AdminHome />
+              </AdminRoute>
+            ),
+          },
+          {
+            path: 'manage-courses',
+            element: (
+              <AdminRoute>
+                <ManageCourses />
+              </AdminRoute>
+            ),
+          },
+          {
+            path: 'history',
+            element: (
+              <AdminRoute>
+                <History />
+              </AdminRoute>
+            ),
+          },
+          {
+            path: 'instructor-home',
+            element: (
+              <AdminRoute>
+                <InstructorHome />
               </AdminRoute>
             ),
           },
