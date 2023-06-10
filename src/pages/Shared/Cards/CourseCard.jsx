@@ -21,6 +21,9 @@ const CourseCard = ({ course }) => {
         <button className='mt-4 bg-rose-600  hover:bg-rose-300 hover:text-rose-700 text-rose-200  py-2 font-semibold uppercase rounded text-xs tracking-wider'>
           download outline
         </button>
+        <button className='mt-4 bg-violet-600  hover:bg-violet-300 hover:text-violet-700 text-violet-200  py-2 font-semibold uppercase rounded text-xs tracking-wider'>
+          download outline
+        </button>
       </div>
       <div className='lg:w-3/4 pl-2 pr-0 '>
         <div className='py-1 px-4 font-bold bg-violet-200 text-violet-700 w-fit rounded-md'>

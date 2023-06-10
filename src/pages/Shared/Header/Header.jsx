@@ -1,17 +1,31 @@
+import { motion } from 'framer-motion';
 import { FaShoppingCart } from 'react-icons/fa';
 import { NavLink, useNavigate } from 'react-router-dom';
 import logo from '../../../assets/letnja-skola.png';
 import logoDark from '../../../assets/letnja-skola-dark.png';
 
 import useAuth from '../../../hooks/useAuth';
+import { useState } from 'react';
 
 const NavBar = () => {
   const { user, logOut, setIsDarkMode, isDarkMode } = useAuth();
   const navigate = useNavigate();
+  const [isOn, setIsOn] = useState(false);
+
+  const toggleSwitch = () => {
+    setIsOn(!isOn);
+    handleThemeSwitch();
+  };
 
   // console.log(user);
   const handleThemeSwitch = () => {
     setIsDarkMode((darkMode) => !darkMode);
+  };
+
+  const spring = {
+    type: 'spring',
+    stiffness: 700,
+    damping: 30,
   };
 
   const handleLogOut = () => {
@@ -99,6 +113,7 @@ const NavBar = () => {
               {navOptions}
             </ul>
           </div>
+
           <a className='btn btn-ghost normal-case text-xl'>
             <img
               className='h-full'
@@ -107,16 +122,30 @@ const NavBar = () => {
             />
           </a>
         </div>
+
         <div className='navbar-center hidden lg:flex'>
           <ul className='menu menu-horizontal px-1'>{navOptions}</ul>
         </div>
         <div className='navbar-end'>
-          <button
+          <div className='w-16  text-lg  rounded-md mx-3 relative flex '>
+            <div
+              className='switch w-16 bg-slate-400'
+              data-isOn={isOn}
+              onClick={toggleSwitch}>
+              <motion.div
+                className='handle w-6 h-6'
+                layout
+                transition={spring}>
+                {isDarkMode ? '🌙' : '🌞'}
+              </motion.div>
+            </div>
+          </div>
+          {/* <button
             type='button'
             onClick={handleThemeSwitch}
             className=' bg-black  dark:bg-blue-300 text-lg p-2 rounded-md mx-3'>
             {isDarkMode ? '🌙' : '🌞'}
-          </button>
+          </button> */}
         </div>
       </div>
     </>
