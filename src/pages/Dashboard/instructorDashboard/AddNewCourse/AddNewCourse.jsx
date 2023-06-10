@@ -41,6 +41,7 @@ const AddNewCourse = () => {
             duration,
             topic,
             courseDetail,
+            requirements,
           } = data;
           const newCourse = {
             name,
@@ -54,8 +55,10 @@ const AddNewCourse = () => {
             status: 'pending',
             topic,
             courseDetail,
+            requirements,
             instructorEmail: user?.email,
             instructorName: user?.displayName,
+            uploadAt: Date.now(),
           };
           console.log(newCourse);
           axiosSecure.post('/courses', newCourse).then((data) => {
