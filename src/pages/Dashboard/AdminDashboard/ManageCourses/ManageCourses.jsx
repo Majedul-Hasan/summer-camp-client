@@ -3,11 +3,12 @@ import { Helmet } from 'react-helmet-async';
 import useAxiosSecure from '../../../../hooks/useAxiosSecure';
 import { useQuery } from '@tanstack/react-query';
 
-import { MdOutlineAdminPanelSettings } from 'react-icons/md';
+import { TiTick } from 'react-icons/ti';
 import { GiTeacher } from 'react-icons/gi';
 import { FaTrashAlt } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import { BsFillArrowUpRightCircleFill } from 'react-icons/Bs';
+import { courseMakeActive } from './ManageCoursesActions';
 
 const ManageCourses = () => {
   const [axiosSecure] = useAxiosSecure();
@@ -21,6 +22,10 @@ const ManageCourses = () => {
       return res.data;
     },
   });
+
+  const handleActive = (user) => {
+    courseMakeActive(user, refetch);
+  };
 
   return (
     <div className='w-full'>
@@ -55,18 +60,12 @@ const ManageCourses = () => {
                   </Link>
                 </td>
                 <td>{singleClass.instructorName}</td>
-                <td>
-                  {singleClass.role === 'admin'
-                    ? 'admin'
-                    : singleClass.role === 'instructor'
-                    ? 'instructor'
-                    : 'student'}
-                </td>
+                <td>{singleClass.status}</td>
                 <td>
                   <button
-                    className='mx-1 bg-green-200  text-green-700 p-2 dark:bg-green-700 dark:text-green-200 rounded-md'
-                    onClick={() => handleMakeAdmin(singleClass)}>
-                    <MdOutlineAdminPanelSettings />
+                    className='mx-1 bg-green-200 text-xl  text-green-700 p-1 dark:bg-green-700 dark:text-green-200 rounded-md'
+                    onClick={() => handleActive(singleClass)}>
+                    <TiTick />
                   </button>
 
                   <button
