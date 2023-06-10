@@ -4,11 +4,12 @@ import useAxiosSecure from '../../../../hooks/useAxiosSecure';
 import { useQuery } from '@tanstack/react-query';
 
 import { TiTick } from 'react-icons/ti';
-import { GiTeacher } from 'react-icons/gi';
+import { MdOutlinePending } from 'react-icons/md';
 import { FaTrashAlt } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import { BsFillArrowUpRightCircleFill } from 'react-icons/Bs';
-import { courseMakeActive } from './ManageCoursesActions';
+import { courseMakeActive, courseMakePending } from './ManageCoursesActions';
+import { ImCross } from 'react-icons/Im';
 
 const ManageCourses = () => {
   const [axiosSecure] = useAxiosSecure();
@@ -19,13 +20,18 @@ const ManageCourses = () => {
       // const res = await fetch(`${import.meta.env.VITE_API}/users`);
       // const res = await axiosSecure.get('/users');
       // return res.data;
+      refetch();
       return res.data;
     },
   });
 
-  const handleActive = (user) => {
-    courseMakeActive(user, refetch);
+  const handleActive = (course) => {
+    courseMakeActive(course, refetch);
   };
+  const handlePending = (course) => {
+    courseMakePending(course, refetch);
+  };
+  const activeCount = classes?.filter((x) => x.status === 'active').length;
 
   return (
     <div className='w-full'>
@@ -33,7 +39,7 @@ const ManageCourses = () => {
         <title>summer camp school | All users</title>
       </Helmet>
       <h3 className='text-3xl font-semibold my-4'>
-        Total Users: {classes.length}
+        Total active courses: {activeCount}
       </h3>
       <div className='overflow-x-auto'>
         <table className='table  w-full'>
@@ -41,6 +47,7 @@ const ManageCourses = () => {
             <tr>
               <th>#</th>
               <th>Name of course</th>
+              <th>detail</th>
               <th>instructor</th>
               <th>status</th>
               <th className='text-center'>Action</th>
@@ -50,9 +57,11 @@ const ManageCourses = () => {
             {classes?.map((singleClass, index) => (
               <tr key={singleClass._id}>
                 <th>{index + 1}</th>
-                <td className='flex items-center'>
+                <td>
                   <span>{singleClass.name}</span>
-
+                </td>
+                <td>
+                  {' '}
                   <Link
                     className='text-xl text-purple-500'
                     to={`/courses/${singleClass._id}`}>
@@ -61,7 +70,7 @@ const ManageCourses = () => {
                 </td>
                 <td>{singleClass.instructorName}</td>
                 <td>{singleClass.status}</td>
-                <td>
+                <td className='flex flex-col gap-2'>
                   <button
                     className='mx-1 bg-green-200 text-xl  text-green-700 p-1 dark:bg-green-700 dark:text-green-200 rounded-md'
                     onClick={() => handleActive(singleClass)}>
@@ -69,15 +78,15 @@ const ManageCourses = () => {
                   </button>
 
                   <button
-                    className='mx-1 bg-violet-200  text-violet-700 p-2 dark:bg-violet-700 dark:text-violet-200 rounded-md'
-                    onClick={() => handleMakeInstructor(singleClass)}>
-                    <GiTeacher />
+                    className='mx-1 bg-yellow-200  text-yellow-700 p-1 text-xl dark:bg-yellow-700 dark:text-yellow-200 rounded-md'
+                    onClick={() => handlePending(singleClass)}>
+                    <MdOutlinePending />
                   </button>
 
                   <button
                     className='mx-1 bg-red-200  text-red-700 p-2 dark:bg-red-700 dark:text-red-200 rounded-md'
                     onClick={() => handleDelete(singleClass)}>
-                    <FaTrashAlt></FaTrashAlt>
+                    <ImCross></ImCross>
                   </button>
                 </td>
               </tr>
