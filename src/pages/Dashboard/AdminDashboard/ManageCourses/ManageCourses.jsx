@@ -5,10 +5,14 @@ import { useQuery } from '@tanstack/react-query';
 
 import { TiTick } from 'react-icons/ti';
 import { MdOutlinePending } from 'react-icons/md';
-import { FaTrashAlt } from 'react-icons/fa';
+
 import { Link } from 'react-router-dom';
 import { BsFillArrowUpRightCircleFill } from 'react-icons/Bs';
-import { courseMakeActive, courseMakePending } from './ManageCoursesActions';
+import {
+  courseDenied,
+  courseMakeActive,
+  courseMakePending,
+} from './ManageCoursesActions';
 import { ImCross } from 'react-icons/Im';
 
 const ManageCourses = () => {
@@ -20,7 +24,7 @@ const ManageCourses = () => {
       // const res = await fetch(`${import.meta.env.VITE_API}/users`);
       // const res = await axiosSecure.get('/users');
       // return res.data;
-      refetch();
+
       return res.data;
     },
   });
@@ -31,7 +35,10 @@ const ManageCourses = () => {
   const handlePending = (course) => {
     courseMakePending(course, refetch);
   };
-  const activeCount = classes?.filter((x) => x.status === 'active').length;
+  const handleDenied = (course) => {
+    courseDenied(course, refetch);
+  };
+  const activeCount = classes?.filter((x) => x.status === 'active')?.length;
 
   return (
     <div className='w-full'>
@@ -85,7 +92,7 @@ const ManageCourses = () => {
 
                   <button
                     className='mx-1 bg-red-200  text-red-700 p-2 dark:bg-red-700 dark:text-red-200 rounded-md'
-                    onClick={() => handleDelete(singleClass)}>
+                    onClick={() => handleDenied(singleClass)}>
                     <ImCross></ImCross>
                   </button>
                 </td>

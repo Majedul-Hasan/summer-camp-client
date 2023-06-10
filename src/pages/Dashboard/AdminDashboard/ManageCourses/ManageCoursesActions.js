@@ -49,23 +49,34 @@ export const courseMakePending = (course, refetch) => {
     });
 };
 
-export const userDelete = (course, refetch) => {
+export const courseDenied = (course, refetch) => {
   swalWithBootstrapButtons
     .fire({
-      title: 'Are you sure?',
-      text: "You won't be able to revert this!",
-      icon: 'warning',
+      title: 'Admin feedback',
+      input: 'text',
+      inputAttributes: {
+        autocapitalize: 'off',
+      },
       showCancelButton: true,
+      confirmButtonText: 'feedback',
+      showLoaderOnConfirm: true,
       //   confirmButtonColor: '#3085d6',
       //   cancelButtonColor: '#d33',
-      confirmButtonText: 'Yes, delete it!',
     })
     .then((result) => {
+        console.log(result);
+
       if (result.isConfirmed) {
         axiosInstance
-          .delete(`${import.meta.env.VITE_API}/users/admin/${course._id}`, {
-            headers,
-          })
+          .patch(
+            `${import.meta.env.VITE_API}/course/decline/${course._id}`,
+            {
+              feedback: result.value,
+            },
+            {
+              headers,
+            }
+          )
 
           .then((data) => {
             if (data.data.deletedCount > 0) {
@@ -80,3 +91,35 @@ export const userDelete = (course, refetch) => {
       }
     });
 };
+/*
+Swal.fire({
+  title: 'admin feedback',
+  input: 'text',
+  inputAttributes: {
+    autocapitalize: 'off',
+  },
+  showCancelButton: true,
+  confirmButtonText: 'Look up',
+  showLoaderOnConfirm: true,
+  preConfirm: (login) => {
+    return fetch(`//api.github.com/users/${login}`)
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error(response.statusText);
+        }
+        return response.json();
+      })
+      .catch((error) => {
+        Swal.showValidationMessage(`Request failed: ${error}`);
+      });
+  },
+  allowOutsideClick: () => !Swal.isLoading(),
+}).then((result) => {
+  if (result.isConfirmed) {
+    Swal.fire({
+      title: `${result.value.login}'s avatar`,
+      imageUrl: result.value.avatar_url,
+    });
+  }
+});
+*/

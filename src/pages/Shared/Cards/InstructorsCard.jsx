@@ -43,10 +43,20 @@ const InstructorsCard = ({ instructor }) => {
             </div>
           </div>
           <div className='flex flex-col w-2/12 items-center justify-center border-r-2'>
-            <div className='text-orange-300 font-bold text-6xl'>
-              {instructor?.courses.length}
-            </div>
-            <div className='text-gray-400'>classes</div>
+            {instructor?.courses?.length > 0 ? (
+              <>
+                <div className='text-orange-300 font-bold text-6xl'>
+                  {instructor?.courses?.length}
+                </div>
+                <div className='text-gray-400 font-semibold text-center'>
+                  classes
+                </div>
+              </>
+            ) : (
+              <div className='text-gray-400 font-semibold text-center'>
+                classes are pending
+              </div>
+            )}
           </div>
         </div>
       </div>
