@@ -3,7 +3,6 @@ import { swalWithBootstrapButtons } from '../../../../util/swalWithBootstrapButt
 const token = localStorage.getItem('school-access-token');
 const headers = {
   Authorization: `Bearer ${token}`,
-  'My-Custom-Header': 'foobar',
 };
 
 export const userMakeAdmin = (user, refetch) => {
@@ -13,10 +12,9 @@ export const userMakeAdmin = (user, refetch) => {
       {},
       { headers }
     )
-    .then((res) => res.json())
     .then((data) => {
       console.log(data);
-      if (data.modifiedCount) {
+      if (data.data.modifiedCount) {
         refetch();
         swalWithBootstrapButtons.fire({
           position: 'center',
@@ -35,10 +33,8 @@ export const userMakeInstructor = (user, refetch) => {
       {},
       { headers }
     )
-    .then((res) => res.json())
     .then((data) => {
-      console.log(data);
-      if (data.modifiedCount) {
+      if (data.data.modifiedCount) {
         refetch();
         swalWithBootstrapButtons.fire({
           position: 'center',
@@ -68,9 +64,9 @@ export const userDelete = (user, refetch) => {
           .delete(`${import.meta.env.VITE_API}/users/admin/${user._id}`, {
             headers,
           })
-          .then((res) => res.json())
+
           .then((data) => {
-            if (data.deletedCount > 0) {
+            if (data.data.deletedCount > 0) {
               refetch();
               swalWithBootstrapButtons.fire(
                 'Deleted!',
