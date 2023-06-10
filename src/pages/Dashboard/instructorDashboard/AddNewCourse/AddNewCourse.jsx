@@ -4,14 +4,14 @@ import { useForm } from 'react-hook-form';
 import useAxiosSecure from '../../../../hooks/useAxiosSecure';
 import { imgHostingUrl } from '../../../../util/imgHostingUrl';
 import { swalWithBootstrapButtons } from '../../../../util/swalWithBootstrapButtons';
-import axiosInstance from '../../../../util/axiosInstance';
+// import axiosInstance from '../../../../util/axiosInstance';
 import useAuth from '../../../../hooks/useAuth';
-import { useState } from 'react';
+// import { useState } from 'react';
 
 const AddNewCourse = () => {
   const [axiosSecure] = useAxiosSecure();
   const { user } = useAuth();
-  const [selectedFile, setSelectedFile] = useState(null);
+  // const [selectedFile, setSelectedFile] = useState(null);
 
   console.log(user?.email, user?.displayName);
 
@@ -19,55 +19,60 @@ const AddNewCourse = () => {
 
   const onSubmit = (data) => {
     const formData = new FormData();
-    // formData.append('image', data.image[0]);
-    formData.append('image', selectedFile);
+    formData.append('image', data.image[0]);
+    // formData.append('image', selectedFile);
     console.log(formData);
-    axiosInstance.post(imgHostingUrl, formData).then((imgResponse) => {
-      console.log(imgResponse);
-      if (imgResponse.data.success) {
-        const imgURL = imgResponse.data.data.display_url;
-        const {
-          name,
-          price,
-          category,
-          continent,
-          level,
-          language,
-          duration,
-          topic,
-          courseDetail,
-        } = data;
-        const newCourse = {
-          name,
-          level,
-          price: parseFloat(price),
-          category,
-          language,
-          duration,
-          continent,
-          image: imgURL,
-          status: 'pending',
-          topic,
-          courseDetail,
-          instructorEmail: user?.email,
-          instructorName: user?.displayName,
-        };
-        console.log(newCourse);
-        axiosSecure.post('/menu', newCourse).then((data) => {
-          console.log('after posting new menu item', data.data);
-          if (data.data.insertedId) {
-            reset();
-            swalWithBootstrapButtons.fire({
-              position: 'top-end',
-              icon: 'success',
-              title: 'Item added successfully',
-              showConfirmButton: false,
-              timer: 1500,
-            });
-          }
-        });
-      }
-    });
+    fetch(imgHostingUrl, {
+      method: 'POST',
+      body: formData,
+    })
+      .then((res) => res.json())
+      .then((imgResponse) => {
+        console.log(imgResponse);
+        if (imgResponse.success) {
+          const imgURL = imgResponse.data.display_url;
+          const {
+            name,
+            price,
+            category,
+            continent,
+            level,
+            language,
+            duration,
+            topic,
+            courseDetail,
+          } = data;
+          const newCourse = {
+            name,
+            level,
+            price: parseFloat(price),
+            category,
+            language,
+            duration,
+            continent,
+            image: imgURL,
+            status: 'pending',
+            topic,
+            courseDetail,
+            instructorEmail: user?.email,
+            instructorName: user?.displayName,
+          };
+          console.log(newCourse);
+          axiosSecure.post('/courses', newCourse).then((data) => {
+            console.log('after posting new menu item', data.data);
+            if (data.data.insertedId) {
+              reset();
+              swalWithBootstrapButtons.fire({
+                position: 'top-end',
+                icon: 'success',
+                title: 'Item added successfully',
+                showConfirmButton: false,
+                timer: 1500,
+              });
+            }
+          });
+        }
+      });
   };
 
   return (
@@ -248,9 +253,9 @@ const AddNewCourse = () => {
           </label>
           <input
             type='file'
-            // {...register('image', { required: true })}
+            {...register('image', { required: true })}
             className='file-input file-input-bordered w-full '
-            onChange={(e) => setSelectedFile(e.target.files[0])}
+            // onChange={(e) => setSelectedFile(e.target.files[0])}
           />
         </div>
         <input
