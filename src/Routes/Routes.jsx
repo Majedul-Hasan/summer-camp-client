@@ -25,6 +25,7 @@ export const router = createBrowserRouter([
       {
         path: '/',
         element: <HomePage></HomePage>,
+        loader: () => fetch(`${import.meta.env.VITE_API}/courses?limit=6`),
       },
       {
         path: 'login',
