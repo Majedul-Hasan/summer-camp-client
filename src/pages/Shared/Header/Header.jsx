@@ -7,12 +7,14 @@ import logoDark from '../../../assets/letnja-skola-dark.png';
 import useAuth from '../../../hooks/useAuth';
 import { useEffect, useState } from 'react';
 import useAdmin from '../../../hooks/useAdmin';
+import useAxiosSecure from '../../../hooks/useAxiosSecure';
 
 const NavBar = () => {
   const { user, logOut, setIsDarkMode, isDarkMode } = useAuth();
   const navigate = useNavigate();
   const [role] = useAdmin();
   const [pendingNumber, setPendingNumber] = useState();
+  const [axiosSecure] = useAxiosSecure();
 
   const [isOn, setIsOn] = useState(false);
   const toggleSwitch = () => {
@@ -25,11 +27,14 @@ const NavBar = () => {
   };
   useEffect(() => {
     if (role?.role === 'admin') {
-      fetch(`${import.meta.env.VITE_API}/course/admin/pending`)
-        .then((res) => res.json())
-        .then((data) => setPendingNumber(data.pending));
+      axiosSecure
+        .get(`${import.meta.env.VITE_API}/course/admin/pending`)
+        .then((data) => {
+          console.log(data);
+          setPendingNumber(data.data.pending);
+        });
     }
-  }, [role]);
+  }, [role, axiosSecure]);
 
   const spring = {
     type: 'spring',
