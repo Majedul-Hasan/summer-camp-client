@@ -7,6 +7,7 @@ import PopularCourses from '../PopularCourses/PopularCourses';
 import { useLoaderData } from 'react-router-dom';
 import PopularInstructors from '../PopularInstructors/PopularInstructors';
 import LearningPath from '../LearningPath/LearningPath';
+import LearningSolutions from '../LearningSolutions/LearningSolutions';
 
 const HomePage = () => {
   const popularCourses = useLoaderData() || [];
@@ -18,6 +19,7 @@ const HomePage = () => {
       <BannerSlider />
       <PopularCourses popularCourses={popularCourses} />
       <LearningPath />
+      <LearningSolutions />
       <PopularInstructors />
       <Events />
       <Testimonials />
