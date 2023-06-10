@@ -27,3 +27,24 @@ export const courseMakeActive = (course, refetch) => {
       }
     });
 };
+
+export const courseMakePending = (course, refetch) => {
+  axiosInstance
+    .patch(
+      `${import.meta.env.VITE_API}/course/pending/${course._id}`,
+      {},
+      { headers }
+    )
+    .then((data) => {
+      if (data.data.modifiedCount) {
+        refetch();
+        swalWithBootstrapButtons.fire({
+          position: 'center',
+          icon: 'success',
+          title: `${course.name} is pending again!`,
+          showConfirmButton: false,
+          timer: 1500,
+        });
+      }
+    });
+};
