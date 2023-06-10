@@ -2,7 +2,7 @@ import InstructorsCard from '../../Shared/Cards/InstructorsCard';
 import { useQuery } from '@tanstack/react-query';
 
 const PopularInstructors = () => {
-  const { data: instructors = [], isLoading: loading } = useQuery({
+  const { data: instructors = [] } = useQuery({
     queryKey: ['instructor'],
     queryFn: async () => {
       const res = await fetch(`${import.meta.env.VITE_API}/users/instructors`);
