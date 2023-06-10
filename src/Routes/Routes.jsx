@@ -18,6 +18,7 @@ import AllCourses from '../pages/AllCoueses/AllCourses';
 import InstructorHome from '../pages/Dashboard/instructorDashboard/InstructorHome';
 import ManageCourses from '../pages/Dashboard/AdminDashboard/ManageCourses/ManageCourses';
 import History from '../pages/Dashboard/AdminDashboard/History/History';
+import AllEvents from '../pages/AllEvents/AllEvents';
 
 export const router = createBrowserRouter([
   {
@@ -37,6 +38,10 @@ export const router = createBrowserRouter([
       {
         path: 'signup',
         element: <Signup></Signup>,
+      },
+      {
+        path: 'events',
+        element: <AllEvents></AllEvents>,
       },
       {
         path: 'all-instructors',
