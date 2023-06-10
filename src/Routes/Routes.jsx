@@ -20,6 +20,7 @@ import ManageCourses from '../pages/Dashboard/AdminDashboard/ManageCourses/Manag
 import History from '../pages/Dashboard/AdminDashboard/History/History';
 import AllEvents from '../pages/AllEvents/AllEvents';
 import DetailCourse from '../pages/DetailCourse/DetailCourse';
+import DetailInstructor from '../pages/DetailInstructor/DetailInstructor';
 
 export const router = createBrowserRouter([
   {
@@ -45,9 +46,16 @@ export const router = createBrowserRouter([
         element: <AllEvents></AllEvents>,
       },
       {
+        path: 'instructor/:id',
+        element: <DetailInstructor></DetailInstructor>,
+        loader: ({ params }) =>
+          fetch(`${import.meta.env.VITE_API}/users/instructors/${params.id}`),
+      },
+      {
         path: '/courses/:id',
         element: <DetailCourse></DetailCourse>,
-        loader: () => fetch(`${import.meta.env.VITE_API}/users/instructors`),
+        loader: ({ params }) =>
+          fetch(`${import.meta.env.VITE_API}/courses/${params.id}`),
       },
       {
         path: 'all-instructors',

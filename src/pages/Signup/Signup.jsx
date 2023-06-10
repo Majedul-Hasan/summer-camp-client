@@ -49,7 +49,7 @@ const SignUp = () => {
          updateUserProfile(data.name, imgURL);
        })
        .then(() => {
-         const { name, email, gender, address, phone } = data;
+         const { name, email, gender, address, phone, image } = data;
 
          const saveUser = {
            name,
@@ -57,6 +57,7 @@ const SignUp = () => {
            gender,
            address,
            phone,
+           image,
            joinAt: Date.now(),
            role: 'student',
          };
