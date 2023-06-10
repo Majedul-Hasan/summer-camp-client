@@ -19,6 +19,7 @@ import InstructorHome from '../pages/Dashboard/instructorDashboard/InstructorHom
 import ManageCourses from '../pages/Dashboard/AdminDashboard/ManageCourses/ManageCourses';
 import History from '../pages/Dashboard/AdminDashboard/History/History';
 import AllEvents from '../pages/AllEvents/AllEvents';
+import DetailCourse from '../pages/DetailCourse/DetailCourse';
 
 export const router = createBrowserRouter([
   {
@@ -42,6 +43,11 @@ export const router = createBrowserRouter([
       {
         path: 'events',
         element: <AllEvents></AllEvents>,
+      },
+      {
+        path: '/courses/:id',
+        element: <DetailCourse></DetailCourse>,
+        loader: () => fetch(`${import.meta.env.VITE_API}/users/instructors`),
       },
       {
         path: 'all-instructors',
