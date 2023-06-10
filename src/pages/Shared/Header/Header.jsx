@@ -5,14 +5,15 @@ import logo from '../../../assets/letnja-skola.png';
 import logoDark from '../../../assets/letnja-skola-dark.png';
 
 import useAuth from '../../../hooks/useAuth';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import useAdmin from '../../../hooks/useAdmin';
 
 const NavBar = () => {
   const { user, logOut, setIsDarkMode, isDarkMode } = useAuth();
   const navigate = useNavigate();
   const [role] = useAdmin();
-  console.log(role);
+  const [pendingNumber, setPendingNumber] = useState();
+
   const [isOn, setIsOn] = useState(false);
   const toggleSwitch = () => {
     setIsOn(!isOn);
@@ -22,6 +23,14 @@ const NavBar = () => {
   const handleThemeSwitch = () => {
     setIsDarkMode((darkMode) => !darkMode);
   };
+  useEffect(() => {
+    if (role?.role === 'admin') {
+      fetch(`${import.meta.env.VITE_API}/course/admin/pending`)
+        .then((res) => res.json())
+        .then((data) => setPendingNumber(data.pending));
+    }
+  }, [role]);
+
   const spring = {
     type: 'spring',
     stiffness: 700,
@@ -52,7 +61,14 @@ const NavBar = () => {
       </li>
       <li>
         {role?.role === 'admin' ? (
-          <NavLink to='/dashboard/admin-home'>Dashboard</NavLink>
+          <NavLink to='/dashboard/admin-home'>
+            <span>
+              Dashboard{' '}
+              <span className='absolute -top-1 badge bg-amber-500'>
+                {pendingNumber}
+              </span>
+            </span>
+          </NavLink>
         ) : role?.role === 'instructor' ? (
           <NavLink to='/dashboard/instructor-home'>Dashboard</NavLink>
         ) : (
