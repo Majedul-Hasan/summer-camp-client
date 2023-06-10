@@ -48,3 +48,35 @@ export const courseMakePending = (course, refetch) => {
       }
     });
 };
+
+export const userDelete = (course, refetch) => {
+  swalWithBootstrapButtons
+    .fire({
+      title: 'Are you sure?',
+      text: "You won't be able to revert this!",
+      icon: 'warning',
+      showCancelButton: true,
+      //   confirmButtonColor: '#3085d6',
+      //   cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, delete it!',
+    })
+    .then((result) => {
+      if (result.isConfirmed) {
+        axiosInstance
+          .delete(`${import.meta.env.VITE_API}/users/admin/${course._id}`, {
+            headers,
+          })
+
+          .then((data) => {
+            if (data.data.deletedCount > 0) {
+              refetch();
+              swalWithBootstrapButtons.fire(
+                'Deleted!',
+                `${course.name} has been deleted.`,
+                'success'
+              );
+            }
+          });
+      }
+    });
+};
