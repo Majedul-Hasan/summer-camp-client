@@ -1,6 +1,15 @@
 import InstructorsCard from '../../Shared/Cards/InstructorsCard';
+import { useQuery } from '@tanstack/react-query';
 
 const PopularInstructors = () => {
+  const { data: instructors = [], isLoading: loading } = useQuery({
+    queryKey: ['instructor'],
+    queryFn: async () => {
+      const res = await fetch(`${import.meta.env.VITE_API}/users/instructors`);
+      return res.json();
+    },
+  });
+
   return (
     <div className='py-10 border-t-2'>
       <div className='text-center '>
@@ -12,9 +21,12 @@ const PopularInstructors = () => {
         </p>
       </div>
       <div className='grid grid-cols-1  gap-6 mx-2'>
-        <InstructorsCard />
-        <InstructorsCard />
-        <InstructorsCard />
+        {instructors?.map((instructor) => (
+          <InstructorsCard
+            key={instructor._id}
+            instructor={instructor}
+          />
+        ))}
       </div>
     </div>
   );
