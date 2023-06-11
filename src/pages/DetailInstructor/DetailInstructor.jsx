@@ -2,9 +2,10 @@ import { useLoaderData } from 'react-router-dom';
 import InstructorHero from './InstructorHero';
 
 const DetailInstructor = () => {
-  const instructor = useLoaderData();
-  const { address, courses, name, email, gender, phone } = instructor || {};
+  const instructorData = useLoaderData();
+  const { instructor, courses } = instructorData || {};
   console.log(instructor);
+  
 
   return (
     <>

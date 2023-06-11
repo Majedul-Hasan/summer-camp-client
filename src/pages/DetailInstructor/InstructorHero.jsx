@@ -1,4 +1,9 @@
-import { AiFillLike } from 'react-icons/Ai';
+import {
+  BsGeoAlt,
+  BsPeopleFill,
+  BsFillTelephoneInboundFill,
+} from 'react-icons/Bs';
+import { SiMinutemailer } from 'react-icons/si';
 import { BsMagic } from 'react-icons/Bs';
 
 const InstructorHero = ({ instructor }) => {
@@ -41,25 +46,34 @@ const InstructorHero = ({ instructor }) => {
               </span>{' '}
               <span className='font-bold text-red-500 mr-3'>
                 {' '}
-                {courses.length}
+                {courses?.length}
               </span>{' '}
               classes
             </p>
             <p className=' my-4 lg:text-2xl md:text-xl max-w-xs sm:text-sm text-xs flex'>
               <span className='font-bold text-white mr-1 '>
-                {/* <AiFillLike></AiFillLike> */}
+                <BsGeoAlt></BsGeoAlt>
               </span>{' '}
-              <span className='font-bold text-blue-200 mr-3'>{address}</span>{' '}
+              <span className='font-bold text-blue-200 mr-3'> {address}</span>{' '}
             </p>
             {/* eslint-disable-next-line react/prop-types */}
             <p className=' my-4 lg:text-2xl md:text-xl max-w-xs sm:text-sm text-xs flex'>
+              <span className='font-bold text-white mr-1 '>
+                <BsPeopleFill></BsPeopleFill>
+              </span>{' '}
               <span className='font-bold text-red-500 mr-3'> {1000}+</span>{' '}
               students
             </p>
             <p className=' my-4 lg:text-2xl md:text-xl max-w-xs sm:text-sm text-xs flex'>
+              <span className='font-bold text-white mr-1 '>
+                <BsFillTelephoneInboundFill></BsFillTelephoneInboundFill>
+              </span>{' '}
               <span className='font-bold text-blue-200 mr-3'>+ {phone}</span>{' '}
             </p>
             <p className=' my-4 lg:text-2xl md:text-xl max-w-xs sm:text-sm text-xs flex'>
+              <span className='font-bold text-white mr-1 '>
+                <SiMinutemailer></SiMinutemailer>
+              </span>{' '}
               <span className='font-bold text-blue-200 mr-3'>{email}</span>{' '}
             </p>
             <div className=' my-4 lg:text-2xl md:text-xl max-w-xs sm:text-sm text-xs flex'>
