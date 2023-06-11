@@ -39,12 +39,14 @@ const AddNewCourse = () => {
             level,
             language,
             duration,
+            seats,
             topic,
             courseDetail,
             requirements,
           } = data;
           const newCourse = {
             name,
+            seats: parseInt(seats),
             level,
             price: parseFloat(price),
             category,
