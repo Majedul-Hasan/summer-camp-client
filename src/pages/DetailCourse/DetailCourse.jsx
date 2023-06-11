@@ -7,9 +7,10 @@ import { Helmet } from 'react-helmet-async';
 import { useLoaderData } from 'react-router-dom';
 import useAuth from '../../hooks/useAuth';
 import { handleAddToCartAction } from '../Shared/Cards/handleAddToCart';
-import CourseCard from '../Shared/Cards/CourseCard';
+
 import CourseInfo from './courseInfo';
 import DetailAndInstructor from './DetailAndInstructor';
+import InstructorOtherCourses from './InstructorOtherCourses';
 
 const DetailCourse = () => {
   const course = useLoaderData();
@@ -74,30 +75,7 @@ const DetailCourse = () => {
             />
 
             {instructorData?.courses?.length && (
-              <div className='my-8'>
-                <div className='my-5'>
-                  <h2 className='text-3xl font-bold text-center'>
-                    Other courses By this instructor
-                  </h2>
-                </div>
-                <div>
-                  <Swiper
-                    slidesPerView={2}
-                    spaceBetween={40}
-                    freeMode={true}
-                    pagination={{
-                      clickable: true,
-                    }}
-                    modules={[FreeMode, Pagination]}
-                    className='mySwiper'>
-                    {instructorData?.courses?.map((x) => (
-                      <SwiperSlide key={x}>
-                        <CourseCard course={x} />
-                      </SwiperSlide>
-                    ))}
-                  </Swiper>
-                </div>
-              </div>
+              <InstructorOtherCourses instructorData={instructorData} />
             )}
             {instructorData?.courses?.length && (
               <div>

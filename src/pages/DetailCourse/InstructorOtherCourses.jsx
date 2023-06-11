@@ -1,4 +1,8 @@
-const InstructorOtherCourses = () => {
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { FreeMode, Pagination } from 'swiper';
+import CourseCard from '../Shared/Cards/CourseCard';
+
+const InstructorOtherCourses = ({ instructorData }) => {
   return (
     <div className='my-8'>
       <div className='my-5'>
