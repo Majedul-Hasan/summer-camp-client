@@ -50,12 +50,15 @@ const InstructorHero = ({ instructor }) => {
               </span>{' '}
               classes
             </p>
-            <p className=' my-4 lg:text-2xl md:text-xl max-w-xs sm:text-sm text-xs flex'>
-              <span className='font-bold text-white mr-1 '>
-                <BsGeoAlt></BsGeoAlt>
-              </span>{' '}
-              <span className='font-bold text-blue-200 mr-3'> {address}</span>{' '}
-            </p>
+            {address && (
+              <p className=' my-4 lg:text-2xl md:text-xl max-w-xs sm:text-sm text-xs flex'>
+                <span className='font-bold text-white mr-1 '>
+                  <BsGeoAlt></BsGeoAlt>
+                </span>{' '}
+                <span className='font-bold text-blue-200 mr-3'> {address}</span>{' '}
+              </p>
+            )}
+
             {/* eslint-disable-next-line react/prop-types */}
             <p className=' my-4 lg:text-2xl md:text-xl max-w-xs sm:text-sm text-xs flex'>
               <span className='font-bold text-white mr-1 '>
@@ -64,12 +67,15 @@ const InstructorHero = ({ instructor }) => {
               <span className='font-bold text-red-500 mr-3'> {1000}+</span>{' '}
               students
             </p>
-            <p className=' my-4 lg:text-2xl md:text-xl max-w-xs sm:text-sm text-xs flex'>
-              <span className='font-bold text-white mr-1 '>
-                <BsFillTelephoneInboundFill></BsFillTelephoneInboundFill>
-              </span>{' '}
-              <span className='font-bold text-blue-200 mr-3'>+ {phone}</span>{' '}
-            </p>
+            {phone && (
+              <p className=' my-4 lg:text-2xl md:text-xl max-w-xs sm:text-sm text-xs flex'>
+                <span className='font-bold text-white mr-1 '>
+                  <BsFillTelephoneInboundFill></BsFillTelephoneInboundFill>
+                </span>{' '}
+                <span className='font-bold text-blue-200 mr-3'>+ {phone}</span>{' '}
+              </p>
+            )}
+
             <p className=' my-4 lg:text-2xl md:text-xl max-w-xs sm:text-sm text-xs flex'>
               <span className='font-bold text-white mr-1 '>
                 <SiMinutemailer></SiMinutemailer>
