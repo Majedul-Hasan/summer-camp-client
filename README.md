@@ -234,14 +234,14 @@ Show all approved classes on this page. Each Class will have the following: ✅
 
         </br>
 
-       - **Manage Users:**  The admin can see the relevant information of all registered users. By default, everyone will be a student. And there will be **2 buttons**: **Make Instructor** button and **Make Admin** button. If a user clicks any of the buttons, disable it.  
+       - **Manage Users:**  The admin can see the relevant information of all registered users. By default, everyone will be a student. And there will be **2 buttons**: **Make Instructor** button and **Make Admin** button. If a user clicks any of the buttons, disable it.  ✅
 
-         - **Make Instructor button Action:** Update the user role as an instructor.
+         - **Make Instructor button Action:** Update the user role as an instructor. ✅
 
-           >**Note:** If the admin makes a user instructor, that user profile page will have the Instructor as the role
+           >**Note:** If the admin makes a user instructor, that user profile page will have the Instructor as the role ✅
 
          - **Make Admin button Action:** Update the user role as an admin.
-          </br>
+          </br> ✅
 
 12. Use **relevant icons** in your **dashboard menus**, animations on your website.\. You have to use **anyone** of the animation libraries below: ✅
     - [Framer-motion](https://www.framer.com/motion/)  ✅

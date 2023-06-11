@@ -67,14 +67,16 @@ const AllUsers = () => {
                 </td>
                 <td>
                   <button
-                    className='mx-1 bg-green-200  text-green-700 p-2 dark:bg-green-700 dark:text-green-200 rounded-md'
-                    onClick={() => handleMakeAdmin(user)}>
+                    className='mx-1 bg-green-200  text-green-700 p-2 dark:bg-green-700 dark:text-green-200  disabled:bg-gray-300 rounded-md'
+                    onClick={() => handleMakeAdmin(user)}
+                    disabled={user.role === 'admin'}>
                     <MdOutlineAdminPanelSettings />
                   </button>
 
                   <button
-                    className='mx-1 bg-violet-200  text-violet-700 p-2 dark:bg-violet-700 dark:text-violet-200 rounded-md'
-                    onClick={() => handleMakeInstructor(user)}>
+                    className='mx-1 bg-violet-200  text-violet-700 p-2 dark:bg-violet-700 dark:text-violet-200 disabled:bg-gray-300  disabled:text-gray-600  rounded-md'
+                    onClick={() => handleMakeInstructor(user)}
+                    disabled={user.role === 'instructor'}>
                     <GiTeacher />
                   </button>
 
@@ -95,15 +97,4 @@ const AllUsers = () => {
 
 export default AllUsers;
 
-/**
-  
- 
- (
-                    <button
-                      onClick={() => (user)}
-                      className='btn btn-ghost bg-orange-600  text-white'>
-                      <FaUserShield></FaUserShield>
-                    </button>
-                  ) 
- 
- */
+
