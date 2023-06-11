@@ -26,7 +26,7 @@ export const handleAddToCartAction = (item, user, refetch, navigate) => {
           swalWithBootstrapButtons.fire({
             position: 'top-end',
             icon: 'success',
-            title: 'Food added on the cart.',
+            title: 'Course added on the cart.',
             showConfirmButton: false,
             timer: 1500,
           });
@@ -35,7 +35,7 @@ export const handleAddToCartAction = (item, user, refetch, navigate) => {
   } else {
     swalWithBootstrapButtons
       .fire({
-        title: 'Please login to order the food',
+        title: 'Please login to purchases the course',
         icon: 'warning',
         showCancelButton: true,
         confirmButtonColor: '#3085d6',

@@ -8,9 +8,11 @@ import useAuth from '../../../hooks/useAuth';
 import { useEffect, useState } from 'react';
 import useAdmin from '../../../hooks/useAdmin';
 import useAxiosSecure from '../../../hooks/useAxiosSecure';
+import useCart from '../../../hooks/useCart';
 
 const NavBar = () => {
   const { user, logOut, setIsDarkMode, isDarkMode } = useAuth();
+  const [cart] = useCart();
   const navigate = useNavigate();
   const [role] = useAdmin();
   const [pendingNumber, setPendingNumber] = useState();
@@ -82,11 +84,14 @@ const NavBar = () => {
       </li>
       <li>
         <NavLink to='/dashboard/mycart'>
-          {/* <button className='btn gap-2'> */}
-          <FaShoppingCart></FaShoppingCart>
-          {/* <div className='badge badge-secondary'>+{0}</div> */}
-          <div className='badge badge-secondary'>+{0}</div>
-          {/* </button> */}
+          <div>
+            <p className='mt-1'>
+              <FaShoppingCart></FaShoppingCart>
+            </p>
+            <span className='absolute -top-1 -right-2 badge bg-amber-500'>
+              {cart?.length || 0}
+            </span>
+          </div>
         </NavLink>
       </li>
       {user ? (
