@@ -163,12 +163,12 @@ Show all approved classes on this page. Each Class will have the following: ✅
    - Image  ✅
    - Name ✅
    - Instructor name  ✅
-   - Available seats 
-   - Price 
-   - Select Button. If the user is not logged in, then tell the user to log in before selecting the course. This button will be disabled if:
-        - Available seats are 0
-        - Logged in as admin/instructor
-    - The class card background will be red if the available seats are 0.
+   - Available seats ✅
+   - Price  ✅
+   - Select Button. If the user is not logged in, then tell the user to log in before selecting the course. This button will be disabled if: 
+        - Available seats are 0  ✅
+        - Logged in as admin/instructor  ✅
+    - The class card background will be red if the available seats are 0. ✅
    <br/>
 
 

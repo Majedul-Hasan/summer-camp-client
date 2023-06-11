@@ -8,18 +8,25 @@ import { Link, useNavigate } from 'react-router-dom';
 import { handleAddToCartAction } from './handleAddToCart';
 import useAuth from '../../../hooks/useAuth';
 import useCart from '../../../hooks/useCart';
+import useAdmin from '../../../hooks/useAdmin';
 
 const CourseCard = ({ course }) => {
   const { user } = useAuth();
   const [, refetch] = useCart();
   const navigate = useNavigate();
+  const [role] = useAdmin();
 
   const handleAddToCart = (course) => {
     handleAddToCartAction(course, user, refetch, navigate);
   };
 
   return (
-    <div className='flex flex-col md:flex-row bg-gray-200 shadow-lg shadow-gray-400 dark:bg-gray-700/60 dark:text-blue-200 py-4 px-2'>
+    <div
+      className={`flex flex-col md:flex-row  py-4 px-2 ${
+        course.seats === 0
+          ? 'shadow-red-400 bg-red-100 shadow-lg dark:bg-red-600/20 dark:text-red-200 '
+          : 'shadow-gray-400 bg-gray-200 shadow-lg dark:bg-gray-700/60 dark:text-blue-200 '
+      }`}>
       <div className='lg:w-1/4 pl-1 pr-2 flex-col flex mb-4'>
         <img
           className='rounded-tl-3xl'
@@ -36,7 +43,12 @@ const CourseCard = ({ course }) => {
         </p>
         <button
           onClick={() => handleAddToCart(course)}
-          className='mt-4 bg-violet-600  hover:bg-violet-300 hover:text-violet-700 text-violet-200  py-2 font-semibold uppercase rounded text-xs tracking-wider'>
+          className='mt-4 bg-violet-600 disabled:bg-gray-300  disabled:text-gray-600  hover:bg-violet-300 hover:text-violet-700 text-violet-200  py-2 font-semibold uppercase rounded text-xs tracking-wider'
+          disabled={
+            course.seats === 0 ||
+            role?.role === 'admin' ||
+            role?.role === 'instructor'
+          }>
           Add To Cart
         </button>
       </div>
@@ -94,7 +106,7 @@ const CourseCard = ({ course }) => {
             <span>
               <MdEventAvailable />
             </span>{' '}
-            {course.s} seats
+            {course.seats} seats
           </div>
         </div>
         <div>
