@@ -20,7 +20,7 @@ const ManageCourses = () => {
   const { data: classes = [], refetch } = useQuery({
     queryKey: ['classes'],
     queryFn: async () => {
-      const res = await axiosSecure.get('/courses');
+      const res = await axiosSecure.get('/admin/courses');
       // const res = await fetch(`${import.meta.env.VITE_API}/users`);
       // const res = await axiosSecure.get('/users');
       // return res.data;
@@ -93,20 +93,23 @@ const ManageCourses = () => {
                 <td>{singleClass.status}</td>
                 <td className='flex flex-col gap-2'>
                   <button
-                    className='mx-1 bg-green-200 text-xl  text-green-700 p-1 dark:bg-green-700 dark:text-green-200 rounded-md'
-                    onClick={() => handleActive(singleClass)}>
+                    className='mx-1 bg-green-200 text-xl  text-green-700   disabled:bg-gray-200 p-1   rounded-md disabled:text-gray-700'
+                    onClick={() => handleActive(singleClass)}
+                    disabled={singleClass.status === 'active'}>
                     <TiTick />
                   </button>
 
                   <button
-                    className='mx-1 bg-yellow-200  text-yellow-700 p-1 text-xl dark:bg-yellow-700 dark:text-yellow-200 rounded-md'
-                    onClick={() => handlePending(singleClass)}>
+                    className='mx-1 bg-yellow-200  text-yellow-700 p-1 text-xl dark:bg-yellow-700 dark:text-yellow-200 rounded-md disabled:bg-gray-200  disabled:text-gray-700 '
+                    onClick={() => handlePending(singleClass)}
+                    disabled={singleClass.status === 'pending'}>
                     <MdOutlinePending />
                   </button>
 
                   <button
-                    className='mx-1 bg-red-200  text-red-700 p-2 dark:bg-red-700 dark:text-red-200 rounded-md'
-                    onClick={() => handleDenied(singleClass)}>
+                    className='mx-1 bg-red-200  text-red-700 p-2 dark:bg-red-700 dark:text-red-200 rounded-md  disabled:bg-gray-200  disabled:text-gray-700'
+                    onClick={() => handleDenied(singleClass)}
+                    disabled={singleClass.status === 'denied'}>
                     <ImCross></ImCross>
                   </button>
                 </td>
