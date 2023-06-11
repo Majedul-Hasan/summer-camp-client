@@ -14,7 +14,7 @@ const CourseCard = ({ course }) => {
           alt={course.name}
         />
         <Link
-          to={`/course/${course._id}`}
+          to={`/courses/${course._id}`}
           className='mt-4 bg-cyan-600 text-center hover:bg-cyan-300 hover:text-cyan-700 text-cyan-200 px-4 py-2 font-semibold uppercase rounded text-xs tracking-wider'>
           course details
         </Link>
