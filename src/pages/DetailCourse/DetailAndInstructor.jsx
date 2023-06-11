@@ -1,6 +1,6 @@
 const DetailAndInstructor = ({ course, photoUrl, bio }) => {
   return (
-    <div className='grid grid-cols-5 my-3 gap-4'>
+    <div className='grid grid-cols-5 my-3 gap-4 dark:text-blue-200'>
       <div className='col-span-3'>
         <h2 className='text-center text-2xl font-bold mb-2'>course Detail</h2>
         <div>

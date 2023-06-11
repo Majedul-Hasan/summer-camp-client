@@ -6,7 +6,7 @@ const InstructorOtherCourses = ({ instructorData }) => {
   return (
     <div className='my-8'>
       <div className='my-5'>
-        <h2 className='text-3xl font-bold text-center'>
+        <h2 className='text-3xl font-bold text-center dark:text-blue-200'>
           Other courses By this instructor
         </h2>
       </div>

@@ -80,7 +80,7 @@ const DetailCourse = () => {
             {instructorData?.courses?.length && (
               <div>
                 <div>
-                  <h2 className='text-3xl font-bold text-center capitalize'>
+                  <h2 className='text-3xl font-bold text-center capitalize dark:text-blue-200'>
                     how students valued this course
                   </h2>
                 </div>

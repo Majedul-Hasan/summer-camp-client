@@ -46,7 +46,7 @@ const CourseInfo = ({ course, handleAddToCart, user }) => {
             </p>
           </div>
           <div>
-            <h3 className='font-bold capitalize py-2 text-center'>
+            <h3 className='font-bold capitalize py-2 text-center dark:text-blue-200'>
               you will learn
             </h3>
             <ul>
