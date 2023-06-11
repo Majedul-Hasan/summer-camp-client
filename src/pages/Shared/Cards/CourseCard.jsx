@@ -1,10 +1,23 @@
+import moment from 'moment';
 /* eslint-disable react/no-unescaped-entities */
 import { AiOutlineClockCircle } from 'react-icons/Ai';
 import { BsFillBarChartLineFill } from 'react-icons/Bs';
 import { FaThumbsUp } from 'react-icons/fa';
-import { Link } from 'react-router-dom';
+import { MdEventAvailable } from 'react-icons/md';
+import { Link, useNavigate } from 'react-router-dom';
+import { handleAddToCartAction } from './handleAddToCart';
+import useAuth from '../../../hooks/useAuth';
+import useCart from '../../../hooks/useCart';
 
 const CourseCard = ({ course }) => {
+  const { user } = useAuth();
+  const [, refetch] = useCart();
+  const navigate = useNavigate();
+
+  const handleAddToCart = (course) => {
+    handleAddToCartAction(course, user, refetch, navigate);
+  };
+
   return (
     <div className='flex flex-col md:flex-row bg-gray-200 shadow-lg shadow-gray-400 dark:bg-gray-700/60 dark:text-blue-200 py-4 px-2'>
       <div className='lg:w-1/4 pl-1 pr-2 flex-col flex mb-4'>
@@ -18,11 +31,13 @@ const CourseCard = ({ course }) => {
           className='mt-4 bg-cyan-600 text-center hover:bg-cyan-300 hover:text-cyan-700 text-cyan-200 px-4 py-2 font-semibold uppercase rounded text-xs tracking-wider'>
           course details
         </Link>
-        <button className='mt-4 bg-rose-600  hover:bg-rose-300 hover:text-rose-700 text-rose-200  py-2 font-semibold uppercase rounded text-xs tracking-wider'>
-          download outline
-        </button>
-        <button className='mt-4 bg-violet-600  hover:bg-violet-300 hover:text-violet-700 text-violet-200  py-2 font-semibold uppercase rounded text-xs tracking-wider'>
-          download outline
+        <p className='mt-4 bg-indigo-200  hover:bg-indigo-800 hover:text-indigo-100 text-indigo-800  py-2 font-semibold  rounded text-xs tracking-wider text-center'>
+          Price: ${course?.price} USD
+        </p>
+        <button
+          onClick={() => handleAddToCart(course)}
+          className='mt-4 bg-violet-600  hover:bg-violet-300 hover:text-violet-700 text-violet-200  py-2 font-semibold uppercase rounded text-xs tracking-wider'>
+          Add To Cart
         </button>
       </div>
       <div className='lg:w-3/4 pl-2 pr-0 '>
@@ -30,6 +45,30 @@ const CourseCard = ({ course }) => {
           {course.category}
         </div>
         <h2 className='font-bold py-2 '>{course.name} </h2>
+        <div className='flex justify-between'>
+          <h2 className=' py-2 '>
+            posted by:{' '}
+            <Link
+              to={`/instructor/${course?.instructor?._id}`}
+              className='font-bold'>
+              {' '}
+              {course.instructorName}{' '}
+            </Link>
+          </h2>
+          <p>{moment(course.uploadAt).fromNow()}</p>
+        </div>
+        <div className='flex items-center gap-1 mx-1'>
+          {course?.ratings && (
+            <>
+              {' '}
+              <span>
+                <FaThumbsUp />
+              </span>{' '}
+              {course.ratings} stars
+            </>
+          )}
+        </div>
+
         <p className='leading-5 whitespace-break-spaces pb-2'>
           {course.courseDetail.length <= 190
             ? course.courseDetail
@@ -52,17 +91,10 @@ const CourseCard = ({ course }) => {
           </div>
 
           <div className='flex items-center gap-1 mx-1'>
-            {course?.ratings ? (
-              <>
-                {' '}
-                <span>
-                  <FaThumbsUp />
-                </span>{' '}
-                {course.ratings} stars
-              </>
-            ) : (
-              <span>New course</span>
-            )}
+            <span>
+              <MdEventAvailable />
+            </span>{' '}
+            {course.s} seats
           </div>
         </div>
         <div>
