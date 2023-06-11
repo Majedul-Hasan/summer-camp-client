@@ -160,9 +160,9 @@ Display all the instructors. Each Instructor will be:
 
 7. **Classes page:**
 Show all approved classes on this page. Each Class will have the following: ✅
-   - Image 
-   - Name 
-   - Instructor name 
+   - Image  ✅
+   - Name ✅
+   - Instructor name  ✅
    - Available seats 
    - Price 
    - Select Button. If the user is not logged in, then tell the user to log in before selecting the course. This button will be disabled if:
