@@ -53,9 +53,13 @@ const ManageCourses = () => {
           <thead>
             <tr>
               <th>#</th>
+              <th>Image</th>
               <th>Name of course</th>
               <th>detail</th>
               <th>instructor</th>
+              <th>Email</th>
+              <th>Seats</th>
+              <th>Price</th>
               <th>status</th>
               <th className='text-center'>Action</th>
             </tr>
@@ -64,6 +68,13 @@ const ManageCourses = () => {
             {classes?.map((singleClass, index) => (
               <tr key={singleClass._id}>
                 <th>{index + 1}</th>
+                <td>
+                  <img
+                    className='w-20'
+                    src={singleClass.image}
+                    alt=''
+                  />
+                </td>
                 <td>
                   <span>{singleClass.name}</span>
                 </td>
@@ -76,6 +87,9 @@ const ManageCourses = () => {
                   </Link>
                 </td>
                 <td>{singleClass.instructorName}</td>
+                <td>{singleClass.instructorEmail}</td>
+                <td>{singleClass.seats}</td>
+                <td>${singleClass.price}</td>
                 <td>{singleClass.status}</td>
                 <td className='flex flex-col gap-2'>
                   <button

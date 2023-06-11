@@ -224,17 +224,17 @@ Show all approved classes on this page. Each Class will have the following: ✅
     <br/>
     ***It will be private & only an admin can access this route.***
 
-       - **Manage Classes:** This page will show all the Classes. All the classes added by the Instructor from the **Add Class page** will be displayed here. Show the following information: **Class Image, Class name, Instructor name, Instructor email, Available seats, Price, Status(pending/approved/denied) 3 buttons( Approve, Deny and send feedback)**.
+       - **Manage Classes:** This page will show all the Classes. All the classes added by the Instructor from the **Add Class page** will be displayed here. Show the following information: **Class Image, Class name, Instructor name, Instructor email, Available seats, Price, Status(pending/approved/denied) 3 buttons( Approve, Deny and send feedback)**. ✅
         
-         >**Note:** By default, the status will be pending. When an admin clicks the Approve button, the status will be updated to approved. The Deny and the Approve button will become disabled.
+         >**Note:** By default, the status will be pending. When an admin clicks the Approve button, the status will be updated to approved. The Deny and the Approve button will become disabled. ✅
         
-         >**Note:** If the admin clicks the Deny button, the status will be updated to denied. The Deny and the Approve button will become disabled. 
+         >**Note:** If the admin clicks the Deny button, the status will be updated to denied. The Deny and the Approve button will become disabled.  ✅
 
-         >**Note:** A modal will be opened When the admin clicks the send feedback button. Admin will write the approved/denied reason in a text field and send it to the Instructor. You can also do this in another route except for the modal.
+         >**Note:** A modal will be opened When the admin clicks the send feedback button. Admin will write the approved/denied reason in a text field and send it to the Instructor. You can also do this in another route except for the modal. ✅
 
         </br>
 
-       - **Manage Users:**  The admin can see the relevant information of all registered users. By default, everyone will be a student. And there will be **2 buttons**: **Make Instructor** button and **Make Admin** button. If a user clicks any of the buttons, disable it.
+       - **Manage Users:**  The admin can see the relevant information of all registered users. By default, everyone will be a student. And there will be **2 buttons**: **Make Instructor** button and **Make Admin** button. If a user clicks any of the buttons, disable it.  
 
          - **Make Instructor button Action:** Update the user role as an instructor.
 
