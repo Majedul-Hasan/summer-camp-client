@@ -4,20 +4,20 @@ import NewsLetter from '../NewsLetter/NewsLetter';
 import Testimonials from '../Testimonials/Testimonials';
 import Events from '../Events/Events';
 import PopularCourses from '../PopularCourses/PopularCourses';
-import { useLoaderData } from 'react-router-dom';
+// import { useLoaderData } from 'react-router-dom';
 import PopularInstructors from '../PopularInstructors/PopularInstructors';
 import LearningPath from '../LearningPath/LearningPath';
 import LearningSolutions from '../LearningSolutions/LearningSolutions';
 
 const HomePage = () => {
-  const popularCourses = useLoaderData() || [];
+ 
   return (
     <>
       <Helmet>
         <title>summerCampLang | Home</title>
       </Helmet>
       <BannerSlider />
-      <PopularCourses popularCourses={popularCourses} />
+      <PopularCourses />
       <LearningPath />
       <LearningSolutions />
       <PopularInstructors />
