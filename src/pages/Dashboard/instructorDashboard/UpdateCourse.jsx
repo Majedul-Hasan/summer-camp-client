@@ -1,12 +1,29 @@
 import { useForm } from 'react-hook-form';
-import { imgHostingUrl } from '../../../util/imgHostingUrl';
+
 import { swalWithBootstrapButtons } from '../../../util/swalWithBootstrapButtons';
 import useAxiosSecure from '../../../hooks/useAxiosSecure';
 import useAuth from '../../../hooks/useAuth';
-import { useLoaderData } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
+import { useQuery } from '@tanstack/react-query';
 
 const UpdateCourse = () => {
-  const loadedCourse = useLoaderData();
+  const [axiosSecure] = useAxiosSecure();
+  const { user } = useAuth();
+  const { id } = useParams();
+  console.log(id);
+
+  const { data: loadedCourse = [], refetch } = useQuery({
+    queryKey: ['loadedCourse'],
+    queryFn: async () => {
+      const res = await axiosSecure.get(`/my-corses/${id}`);
+      // const res = await fetch(`${import.meta.env.VITE_API}/users`);
+      // const res = await axiosSecure.get('/users');
+      // return res.data;
+
+      return res.data;
+    },
+  });
+
   console.log(loadedCourse);
   const {
     _id,
@@ -24,8 +41,6 @@ const UpdateCourse = () => {
     requirements,
   } = loadedCourse;
 
-  const [axiosSecure] = useAxiosSecure();
-  const { user } = useAuth();
   // const [selectedFile, setSelectedFile] = useState(null);
 
   console.log(user?.email, user?.displayName);
@@ -80,7 +95,6 @@ const UpdateCourse = () => {
       }
     });
   };
-
 
   return (
     <div className='w-full px-10 dark:text-blue-200'>
