@@ -1,6 +1,15 @@
+import { useEffect, useState } from 'react';
 import CourseCard from '../../Shared/Cards/CourseCard';
 
-const PopularCourses = ({ popularCourses }) => {
+const PopularCourses = () => {
+  const [popularCourses, setPopularCourses] = useState();
+
+  useEffect(() => {
+    fetch(`${import.meta.env.VITE_API}/courses?limit=6`)
+      .then((response) => response.json())
+      .then((data) => setPopularCourses(data));
+  }, []);
+
   return (
     <div className='py-10 border-t-2'>
       <div className='text-center '>
