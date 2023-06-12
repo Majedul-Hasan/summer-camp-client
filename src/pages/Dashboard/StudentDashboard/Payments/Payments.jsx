@@ -18,9 +18,11 @@ const Payment = () => {
       </Helmet>
 
       <section className='h-full'>
-        <div className='text-center dark:text-blue-200'>
-          <p className=''>please process</p>
-          <h2>Payment</h2>
+        <div className='text-center dark:text-blue-200 my-10'>
+          <p className=' text-xl'>please process</p>
+          <h2 className='text-3xl uppercase text-center my-5 font-bold'>
+            Payment
+          </h2>
         </div>
 
         <Elements stripe={stripePromise}>

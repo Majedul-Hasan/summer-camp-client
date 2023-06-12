@@ -103,16 +103,16 @@ const CheckoutForm = ({ cart, price }) => {
   return (
     <>
       <form
-        className='w-2/3 m-8'
+        className='w-2/3 m-8 '
         onSubmit={handleSubmit}>
         <CardElement
           options={{
             style: {
               base: {
                 fontSize: '16px',
-                color: '#424770',
+                color: '#5a64b1',
                 '::placeholder': {
-                  color: '#aab7c4',
+                  color: '#2e4861',
                 },
               },
               invalid: {
@@ -122,7 +122,7 @@ const CheckoutForm = ({ cart, price }) => {
           }}
         />
         <button
-          className='btn btn-primary btn-sm mt-4'
+          className='mt-4 bg-cyan-600  hover:bg-cyan-300 hover:text-cyan-700 text-cyan-200 px-4 py-2 font-semibold uppercase rounded text-xs tracking-wider'
           type='submit'
           disabled={!stripe || !clientSecret || processing}>
           Pay

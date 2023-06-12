@@ -1,6 +1,6 @@
 import { Helmet } from 'react-helmet-async';
 import useCart from '../../../hooks/useCart';
-import { Link } from 'react-router-dom';
+
 import { handleDeleteAction } from './SelectedClassesActions';
 import { FaTrashAlt } from 'react-icons/fa';
 import useAxiosSecure from '../../../hooks/useAxiosSecure';
