@@ -21,6 +21,9 @@ import History from '../pages/Dashboard/AdminDashboard/History/History';
 import AllEvents from '../pages/AllEvents/AllEvents';
 import DetailCourse from '../pages/DetailCourse/DetailCourse';
 import DetailInstructor from '../pages/DetailInstructor/DetailInstructor';
+import StudentRoute from './StudentRoute.';
+import SelectedClasses from '../pages/Dashboard/StudentDashboard/SelectedClasses';
+// import Payments from '../pages/Dashboard/StudentDashboard/Payments/Payments';
 
 export const router = createBrowserRouter([
   {
@@ -79,6 +82,22 @@ export const router = createBrowserRouter([
             path: '/dashboard',
             element: <StudentHome></StudentHome>,
           },
+          {
+            path: 'selected-classes',
+            element: (
+              <StudentRoute>
+                <SelectedClasses />
+              </StudentRoute>
+            ),
+          },
+          // {
+          //   path: 'payment',
+          //   element: (
+          //     <StudentRoute>
+          //       <Payments />
+          //     </StudentRoute>
+          //   ),
+          // },
           {
             path: 'add-course',
             element: <AddNewCourse></AddNewCourse>,
