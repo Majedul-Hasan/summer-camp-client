@@ -23,7 +23,7 @@ import DetailCourse from '../pages/DetailCourse/DetailCourse';
 import DetailInstructor from '../pages/DetailInstructor/DetailInstructor';
 import StudentRoute from './StudentRoute.';
 import SelectedClasses from '../pages/Dashboard/StudentDashboard/SelectedClasses';
-// import Payments from '../pages/Dashboard/StudentDashboard/Payments/Payments';
+import Payments from '../pages/Dashboard/StudentDashboard/Payments/Payments';
 
 export const router = createBrowserRouter([
   {
@@ -89,14 +89,14 @@ export const router = createBrowserRouter([
               </StudentRoute>
             ),
           },
-          // {
-          //   path: 'payment',
-          //   element: (
-          //     <StudentRoute>
-          //       <Payments />
-          //     </StudentRoute>
-          //   ),
-          // },
+          {
+            path: 'payment',
+            element: (
+              <StudentRoute>
+                <Payments />
+              </StudentRoute>
+            ),
+          },
           {
             path: 'add-course',
             element: <AddNewCourse></AddNewCourse>,
