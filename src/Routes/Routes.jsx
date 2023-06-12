@@ -26,6 +26,8 @@ import SelectedClasses from '../pages/Dashboard/StudentDashboard/SelectedClasses
 import Payments from '../pages/Dashboard/StudentDashboard/Payments/Payments';
 import StudentsRoute from './StudentRoute.';
 import PaymentsHistory from '../pages/Dashboard/StudentDashboard/Payments/PaymentsHistory';
+import InstructorRoute from './InstructorRoute';
+import MyCourses from '../pages/Dashboard/instructorDashboard/MyCourses';
 
 export const router = createBrowserRouter([
   {
@@ -111,10 +113,7 @@ export const router = createBrowserRouter([
               </StudentRoute>
             ),
           },
-          {
-            path: 'add-course',
-            element: <AddNewCourse></AddNewCourse>,
-          },
+
           {
             path: 'admin-home',
             element: (
@@ -142,9 +141,27 @@ export const router = createBrowserRouter([
           {
             path: 'instructor-home',
             element: (
-              <AdminRoute>
+              <InstructorRoute>
                 <InstructorHome />
-              </AdminRoute>
+              </InstructorRoute>
+            ),
+          },
+          {
+            path: 'add-course',
+
+            element: (
+              <InstructorRoute>
+                <AddNewCourse />
+              </InstructorRoute>
+            ),
+          },
+          {
+            path: 'my-corses',
+
+            element: (
+              <InstructorRoute>
+                <MyCourses />
+              </InstructorRoute>
             ),
           },
           {

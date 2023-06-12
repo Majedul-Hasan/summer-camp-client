@@ -179,17 +179,21 @@ Show all approved classes on this page. Each Class will have the following: ✅
     <br/>
     ***It will be private & only a student can access this route.***
     
-     - **My Selected Classes:** The student will see all the Classes they booked after clicking the Select button. You must display the relevant information on the Class, Delete, and Pay buttons. More in point 9. On clicking the **Delete button**, a student can remove a selected Class from the list.
+     - **My Selected Classes:** The student will see all the Classes they booked after clicking the Select button. You must display the relevant information on the Class, Delete, and Pay buttons. More in point 9. On clicking the **Delete button**, a student can remove a selected Class from the list.  ✅
 
-     - **My Enrolled Classes:**  Show all the Classes a student selected after successful payment.
+
+     - **My Enrolled Classes:**  Show all the Classes a student selected after successful payment. ✅
+
 
 <br/>
 
 9. **Payment: (Student Dashboard)**
 
-    - **Pay button Action:** Upon clicking the **Pay button** for a Class on the My Selected Classes, the student will be redirected to the payment page to finalize their payment. After a successful payment, the **Available seats** for the particular Class will be reduced by 1. The Class information will be shown on the **My Enrolled Classes page**and removed from the **My Selected Classes page**.
+    - **Pay button Action:** Upon clicking the **Pay button** for a Class on the My Selected Classes, the student will be redirected to the payment page to finalize their payment. After a successful payment, the **Available seats** for the particular Class will be reduced by 1. The Class information will be shown on the **My Enrolled Classes page**and removed from the **My Selected Classes page**. ✅
 
-    - Create a payment history page for students. It will show the payment made by that student. Make sure to sort the payment history descending. The newest payment will be at the top
+
+    - Create a payment history page for students. It will show the payment made by that student. Make sure to sort the payment history descending. The newest payment will be at the top ✅
+
 
 
 <br/>
@@ -215,7 +219,7 @@ Show all approved classes on this page. Each Class will have the following: ✅
 
         - **Feedback:** 
             - There will be no feedback if the Class is in pending or approved status.
-            - If the Class is in the denied state by the admin, at that time, an admin can write feedback explaining why the Class was denied, which will appear in the feedback column.
+            - If the Class is in the denied state by the admin, at that time, an admin can write feedback explaining why the Class was denied, which will appear in the feedback column. 
 
     
 <br/>
@@ -240,7 +244,8 @@ Show all approved classes on this page. Each Class will have the following: ✅
 
            >**Note:** If the admin makes a user instructor, that user profile page will have the Instructor as the role ✅
 
-         - **Make Admin button Action:** Update the user role as an admin.
+         - **Make Admin button Action:** Update the user role as an admin. ✅
+
           </br> ✅
 
 12. Use **relevant icons** in your **dashboard menus**, animations on your website.\. You have to use **anyone** of the animation libraries below: ✅
