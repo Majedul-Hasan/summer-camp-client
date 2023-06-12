@@ -9,9 +9,10 @@ import {
 } from 'react-icons/fa';
 import useAdmin from '../hooks/useAdmin';
 import { BsArrowBarRight } from 'react-icons/Bs';
+import useCart from '../hooks/useCart';
 
 const Dashboard = () => {
-  // TODO: load data from the server to have dynamic isAdmin based on Data
+  const [cart] = useCart();
 
   const [role] = useAdmin();
   console.log(role);
@@ -104,7 +105,10 @@ const Dashboard = () => {
               <li>
                 <NavLink to='/dashboard/selected-classes'>
                   <FaShoppingCart></FaShoppingCart> My Selected
-                  <span className='badge inl badge-secondary'>+{0}</span>
+                  <span className='badge inl badge-secondary'>
+                    {' '}
+                    +{cart?.length || 0}
+                  </span>
                 </NavLink>
               </li>
             </>
