@@ -162,6 +162,8 @@ export const router = createBrowserRouter([
                 <UpdateCourse />
               </InstructorRoute>
             ),
+            loader: ({ params }) =>
+              fetch(`${import.meta.env.VITE_API}/courses/${params.id}`),
           },
           {
             path: 'my-corses',

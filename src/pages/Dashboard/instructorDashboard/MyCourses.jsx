@@ -13,7 +13,7 @@ import { FiEdit } from 'react-icons/fi';
 const MyCourses = () => {
   const { user } = useAuth();
   const [axiosSecure] = useAxiosSecure();
-  const { data: myClasses = [], refetch } = useQuery({
+  const { data: myClasses = [] } = useQuery({
     queryKey: ['myClasses'],
 
     queryFn: async () => {
@@ -92,8 +92,7 @@ const MyCourses = () => {
 
                     <button
                       className='mx-1 bg-yellow-200  text-yellow-700 p-1 text-xl dark:bg-yellow-700 dark:text-yellow-200 rounded-md disabled:bg-gray-200  disabled:text-gray-700 '
-                      onClick={() => handlePending(singleClass)}
-                      disabled={singleClass.status === 'pending'}>
+                      disabled>
                       <MdOutlinePending />
                     </button>
                   </td>
