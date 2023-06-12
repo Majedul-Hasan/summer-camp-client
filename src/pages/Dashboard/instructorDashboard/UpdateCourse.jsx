@@ -9,6 +9,7 @@ const UpdateCourse = () => {
   const loadedCourse = useLoaderData();
   console.log(loadedCourse);
   const {
+    _id,
     name,
     price,
     category,
@@ -32,67 +33,54 @@ const UpdateCourse = () => {
   const { register, handleSubmit, reset } = useForm();
 
   const onSubmit = (data) => {
-    const formData = new FormData();
-    formData.append('image', data.image[0]);
-    // formData.append('image', selectedFile);
-    console.log(formData);
-    fetch(imgHostingUrl, {
-      method: 'POST',
-      body: formData,
-    })
-      .then((res) => res.json())
-      .then((imgResponse) => {
-        console.log(imgResponse);
-        if (imgResponse.success) {
-          const imgURL = imgResponse.data.display_url;
-          const {
-            name,
-            price,
-            category,
-            continent,
-            level,
-            language,
-            duration,
-            seats,
-            topic,
-            courseDetail,
-            requirements,
-          } = data;
-          const newCourse = {
-            name,
-            seats: parseInt(seats),
-            level,
-            price: parseFloat(price),
-            category,
-            language,
-            duration,
-            continent,
-            image: imgURL,
-            status: 'pending',
-            topic,
-            courseDetail,
-            requirements,
-            instructorEmail: user?.email,
-            instructorName: user?.displayName,
-            uploadAt: Date.now(),
-          };
-          console.log(newCourse);
-          axiosSecure.post('/courses', newCourse).then((data) => {
-            console.log('after posting new menu item', data.data);
-            if (data.data.insertedId) {
-              reset();
-              swalWithBootstrapButtons.fire({
-                position: 'top-end',
-                icon: 'success',
-                title: 'Item added successfully',
-                showConfirmButton: false,
-                timer: 1500,
-              });
-            }
-          });
-        }
-      });
+    const {
+      name,
+      price,
+      category,
+      continent,
+      level,
+      language,
+      duration,
+      seats,
+      image,
+      topic,
+      courseDetail,
+      requirements,
+    } = data;
+    const updatedCourse = {
+      name,
+      seats: parseInt(seats),
+      level,
+      price: parseFloat(price),
+      category,
+      language,
+      duration,
+      continent,
+      image,
+      status: 'pending',
+      topic,
+      courseDetail,
+      requirements,
+      instructorEmail: user?.email,
+      instructorName: user?.displayName,
+      updatedAt: Date.now(),
+    };
+    console.log(updatedCourse);
+    axiosSecure.patch(`/courses/${_id}`, updatedCourse).then((data) => {
+      console.log('after posting new menu item', data.data);
+      if (data.data.modifiedCount > 0) {
+        reset();
+        swalWithBootstrapButtons.fire({
+          position: 'top-end',
+          icon: 'success',
+          title: 'Item updated successfully',
+          showConfirmButton: false,
+          timer: 1500,
+        });
+      }
+    });
   };
+
 
   return (
     <div className='w-full px-10 dark:text-blue-200'>
