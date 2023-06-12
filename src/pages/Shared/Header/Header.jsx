@@ -83,7 +83,7 @@ const NavBar = () => {
         )}
       </li>
       <li>
-        <NavLink to='/dashboard/mycart'>
+        <NavLink to='/dashboard/selected-classes'>
           <div>
             <p className='mt-1'>
               <FaShoppingCart></FaShoppingCart>
