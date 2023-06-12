@@ -83,7 +83,6 @@ export const router = createBrowserRouter([
             path: '/dashboard/student-home',
             element: (
               <StudentsRoute>
-                {' '}
                 <StudentHome />
               </StudentsRoute>
             ),
