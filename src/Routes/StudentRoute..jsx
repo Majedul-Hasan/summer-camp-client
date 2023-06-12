@@ -2,7 +2,7 @@ import { Navigate, useLocation } from 'react-router';
 import useAuth from '../hooks/useAuth';
 import useAdmin from '../hooks/useAdmin';
 
-const InstructorRoute = ({ children }) => {
+const StudentsRoute = ({ children }) => {
   const { user, loading } = useAuth();
   const [role, isAdminLoading] = useAdmin();
   const location = useLocation();
@@ -22,4 +22,4 @@ const InstructorRoute = ({ children }) => {
   );
 };
 
-export default InstructorRoute;
+export default StudentsRoute;

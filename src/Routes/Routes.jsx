@@ -24,6 +24,8 @@ import DetailInstructor from '../pages/DetailInstructor/DetailInstructor';
 import StudentRoute from './StudentRoute.';
 import SelectedClasses from '../pages/Dashboard/StudentDashboard/SelectedClasses';
 import Payments from '../pages/Dashboard/StudentDashboard/Payments/Payments';
+import StudentsRoute from './StudentRoute.';
+import PaymentsHistory from '../pages/Dashboard/StudentDashboard/Payments/PaymentsHistory';
 
 export const router = createBrowserRouter([
   {
@@ -78,8 +80,13 @@ export const router = createBrowserRouter([
         ),
         children: [
           {
-            path: '/dashboard',
-            element: <StudentHome></StudentHome>,
+            path: '/dashboard/student-home',
+            element: (
+              <StudentsRoute>
+                {' '}
+                <StudentHome />
+              </StudentsRoute>
+            ),
           },
           {
             path: 'selected-classes',
@@ -94,6 +101,14 @@ export const router = createBrowserRouter([
             element: (
               <StudentRoute>
                 <Payments />
+              </StudentRoute>
+            ),
+          },
+          {
+            path: 'payment-history',
+            element: (
+              <StudentRoute>
+                <PaymentsHistory />
               </StudentRoute>
             ),
           },

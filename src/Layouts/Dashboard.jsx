@@ -65,7 +65,7 @@ const Dashboard = () => {
           ) : role?.role === 'instructor' ? (
             <>
               <li>
-                <NavLink to='/dashboard/user-home'>
+                <NavLink to='/dashboard/instructor-home'>
                   <FaHome></FaHome> instructor Home
                 </NavLink>
               </li>
@@ -88,8 +88,8 @@ const Dashboard = () => {
           ) : (
             <>
               <li>
-                <NavLink to='/dashboard/user-home'>
-                  <FaHome></FaHome> User Home
+                <NavLink to='/dashboard/student-home'>
+                  <FaHome></FaHome> Student Home
                 </NavLink>
               </li>
               <li>
@@ -98,7 +98,7 @@ const Dashboard = () => {
                 </NavLink>
               </li>
               <li>
-                <NavLink to='/dashboard/history'>
+                <NavLink to='/dashboard/payment-history'>
                   <FaWallet></FaWallet> Payment History
                 </NavLink>
               </li>

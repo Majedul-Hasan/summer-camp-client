@@ -78,9 +78,9 @@ const NavBar = () => {
           </NavLink>
         ) : role?.role === 'instructor' ? (
           <NavLink to='/dashboard/instructor-home'>Dashboard</NavLink>
-        ) : (
-          <NavLink to='/dashboard/user-home'>Dashboard</NavLink>
-        )}
+        ) : role?.role === 'student' ? (
+          <NavLink to='/dashboard/student-home'>Dashboard</NavLink>
+        ) : null}
       </li>
       <li>
         <NavLink to='/dashboard/selected-classes'>
