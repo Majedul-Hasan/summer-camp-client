@@ -23,7 +23,7 @@ const CourseCard = ({ course }) => {
   return (
     <div
       className={`flex flex-col md:flex-row  py-4 px-2 ${
-        course.seats === 0
+        course.seats <= 0
           ? 'shadow-red-400 bg-red-100 shadow-lg dark:bg-red-600/20 dark:text-red-200 '
           : 'shadow-gray-400 bg-gray-200 shadow-lg dark:bg-gray-700/60 dark:text-blue-200 '
       }`}>

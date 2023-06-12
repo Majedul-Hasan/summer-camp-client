@@ -4,6 +4,7 @@ import { useState } from 'react';
 import './CheckoutForm.css';
 import useAxiosSecure from '../../../../hooks/useAxiosSecure';
 import useAuth from '../../../../hooks/useAuth';
+import { swalWithBootstrapButtons } from '../../../../util/swalWithBootstrapButtons';
 
 const CheckoutForm = ({ cart, price }) => {
   const stripe = useStripe();
@@ -78,7 +79,8 @@ const CheckoutForm = ({ cart, price }) => {
         date: new Date(),
         quantity: cart.length,
         cartItems: cart.map((item) => item._id),
-        menuItems: cart.map((item) => item.menuItemId),
+        courseItems: cart.map((item) => item.courseId),
+
         status: 'service pending',
         itemNames: cart.map((item) => item.name),
       };
@@ -87,7 +89,12 @@ const CheckoutForm = ({ cart, price }) => {
         if (res.data.insertResult.insertedId) {
           // display confirm
           console.log(res.data.insertResult.insertedId);
-          alert(res.data.insertResult.insertedId);
+          //   alert(res.data.insertResult.insertedId);
+          swalWithBootstrapButtons.fire(
+            'Your purchase was successfull',
+            `${res.data.insertResult.insertedId}`,
+            'success'
+          );
         }
       });
     }
