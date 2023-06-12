@@ -28,6 +28,7 @@ import StudentsRoute from './StudentRoute.';
 import PaymentsHistory from '../pages/Dashboard/StudentDashboard/Payments/PaymentsHistory';
 import InstructorRoute from './InstructorRoute';
 import MyCourses from '../pages/Dashboard/instructorDashboard/MyCourses';
+import UpdateCourse from '../pages/Dashboard/instructorDashboard/UpdateCourse';
 
 export const router = createBrowserRouter([
   {
@@ -148,7 +149,6 @@ export const router = createBrowserRouter([
           },
           {
             path: 'add-course',
-
             element: (
               <InstructorRoute>
                 <AddNewCourse />
@@ -156,8 +156,15 @@ export const router = createBrowserRouter([
             ),
           },
           {
+            path: 'update-corses/:id',
+            element: (
+              <InstructorRoute>
+                <UpdateCourse />
+              </InstructorRoute>
+            ),
+          },
+          {
             path: 'my-corses',
-
             element: (
               <InstructorRoute>
                 <MyCourses />

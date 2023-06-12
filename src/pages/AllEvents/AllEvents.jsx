@@ -5,7 +5,7 @@ const AllEvents = () => {
   return (
     <>
       <Helmet>
-        <title>summer camp school | All courses</title>
+        <title>summer camp school | All events</title>
       </Helmet>
       <div className='py-10'>
         <h2 className='font-bold  text-4xl text-center text-gray-600 dark:text-blue-200 '>
