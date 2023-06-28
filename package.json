@@ -10,6 +10,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@reduxjs/toolkit": "^1.9.5",
     "@stripe/react-stripe-js": "^2.1.0",
     "@stripe/stripe-js": "^1.54.0",
     "@tanstack/react-query": "^4.29.12",
@@ -23,6 +24,7 @@
     "react-hook-form": "^7.44.3",
     "react-icons": "^4.9.0",
     "react-parallax-mouse": "^2.0.1",
+    "react-redux": "^8.1.1",
     "react-responsive-carousel": "^3.2.23",
     "react-router-dom": "^6.12.0",
     "sweetalert2": "^11.7.11",

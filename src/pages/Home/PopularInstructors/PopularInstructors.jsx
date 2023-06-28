@@ -22,7 +22,7 @@ const PopularInstructors = () => {
           How people loves their instructors
         </p>
       </div>
-      <div className='grid grid-cols-1  gap-6 mx-2'>
+      <div className='grid grid-cols-1   md:grid-cols-2   gap-6 mx-2'>
         {instructors?.map((instructor) => (
           <InstructorsCard
             key={instructor._id}
