@@ -3,7 +3,7 @@ import { userLoggedIn } from './authSlice';
 
 export const authApi = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
-    register: builder.mutation({
+    registerApi: builder.mutation({
       query: (data) => ({
         url: '/users/register',
         method: 'POST',
@@ -27,16 +27,17 @@ export const authApi = apiSlice.injectEndpoints({
 
     login: builder.mutation({
       query: (data) => ({
-        url: '/login',
+        url: '/users/login',
         method: 'POST',
         body: data,
       }),
       async onQueryStarted(arg, { queryFulfilled, dispatch }) {
         try {
           const result = await queryFulfilled;
+          console.log(result);
           dispatch(
             userLoggedIn({
-              accessToken: result.data.accessToken,
+              accessToken: result.data.token,
               user: result.data.user,
             })
           );
@@ -48,4 +49,4 @@ export const authApi = apiSlice.injectEndpoints({
   }),
 });
 
-export const { useLoginMutation, useRegisterMutation } = authApi;
+export const { useLoginMutation, useRegisterApiMutation } = authApi;

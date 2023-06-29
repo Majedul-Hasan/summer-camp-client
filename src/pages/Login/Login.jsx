@@ -6,6 +6,7 @@ import { AiOutlineEye, AiOutlineEyeInvisible } from 'react-icons/Ai';
 import { useState } from 'react';
 import SocialLogin from '../Shared/SocialLogin/SocialLogin';
 import { swalWithBootstrapButtons } from '../../util/swalWithBootstrapButtons';
+import { useLoginMutation } from '../../features/auth/authApi';
 
 const Login = () => {
   const [firebaseError, setFirebaseError] = useState(null);
@@ -15,6 +16,9 @@ const Login = () => {
   const from = location.state?.from?.pathname || '/';
   const [visible, setVisible] = useState(false);
 
+  const [login, { data: resData, isLoading, error: responseError }] =
+    useLoginMutation();
+
   const {
     register,
     handleSubmit,
@@ -23,21 +27,8 @@ const Login = () => {
 
   const onSubmit = (data) => {
     console.log(data);
-    signIn(data.email, data.password)
-      .then((result) => {
-        const user = result.user;
-        console.log(user);
-        swalWithBootstrapButtons.fire({
-          title: 'User Login Successful.',
-        });
-        navigate(from, { replace: true });
-      })
-      .catch((error) => {
-        const errorMessage = error.message;
-        setFirebaseError(errorMessage);
-
-        // ..
-      });
+    login(data);
+    console.log(resData);
   };
 
   return (
