@@ -9,6 +9,7 @@ import { useEffect, useState } from 'react';
 import useAdmin from '../../../hooks/useAdmin';
 import useAxiosSecure from '../../../hooks/useAxiosSecure';
 import useCart from '../../../hooks/useCart';
+import { usePersistUserQuery } from '../../../features/auth/authApi';
 
 const NavBar = () => {
   const { user, logOut, setIsDarkMode, isDarkMode } = useAuth();
@@ -17,6 +18,9 @@ const NavBar = () => {
   const [role] = useAdmin();
   const [pendingNumber, setPendingNumber] = useState();
   const [axiosSecure] = useAxiosSecure();
+
+  const { isError, isFetching, isLoading, isSuccess, data } =
+    usePersistUserQuery();
 
   const [isOn, setIsOn] = useState(false);
   const toggleSwitch = () => {

@@ -69,7 +69,7 @@ const AuthProvider = ({ children }) => {
             setLoading(false);
           });
       } else {
-        localStorage.removeItem('school-access-token');
+        console.log('object');
       }
     });
     return () => {

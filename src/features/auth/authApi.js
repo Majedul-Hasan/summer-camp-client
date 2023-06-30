@@ -49,7 +49,7 @@ export const authApi = apiSlice.injectEndpoints({
     }),
 
     persistUser: builder.query({
-      query: (data) => ({
+      query: () => ({
         url: '/users/current-user',
         method: 'GET',
       }),
@@ -72,4 +72,5 @@ export const authApi = apiSlice.injectEndpoints({
   }),
 });
 
-export const { useLoginMutation, useRegisterApiMutation } = authApi;
+export const { useLoginMutation, useRegisterApiMutation, usePersistUserQuery } =
+  authApi;
