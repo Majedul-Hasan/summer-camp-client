@@ -35,6 +35,7 @@ export const authApi = apiSlice.injectEndpoints({
         try {
           const result = await queryFulfilled;
           console.log(result);
+          localStorage.setItem('school-access-token', result.data.token);
           dispatch(
             userLoggedIn({
               accessToken: result.data.token,

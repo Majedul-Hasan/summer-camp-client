@@ -1,16 +1,15 @@
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import reading from '../../assets/Reading a book_Monochromatic.svg';
 import { useForm } from 'react-hook-form';
-import useAuth from '../../hooks/useAuth';
+
 import { AiOutlineEye, AiOutlineEyeInvisible } from 'react-icons/Ai';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import SocialLogin from '../Shared/SocialLogin/SocialLogin';
 import { swalWithBootstrapButtons } from '../../util/swalWithBootstrapButtons';
 import { useLoginMutation } from '../../features/auth/authApi';
 
 const Login = () => {
-  const [firebaseError, setFirebaseError] = useState(null);
-  const { signIn } = useAuth();
+  const [error, setError] = useState('');
   const navigate = useNavigate();
   const location = useLocation();
   const from = location.state?.from?.pathname || '/';
@@ -19,16 +18,35 @@ const Login = () => {
   const [login, { data: resData, isLoading, error: responseError }] =
     useLoginMutation();
 
+  useEffect(() => {
+    if (responseError?.data) {
+      setError(responseError.data);
+    }
+    if (resData?.token && resData?.user) {
+      navigate(from);
+    }
+  }, [resData, responseError, navigate, from]);
+
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm();
 
   const onSubmit = (data) => {
-    console.log(data);
     login(data);
-    console.log(resData);
+    if (resData && !responseError) {
+      reset();
+      setError('');
+      swalWithBootstrapButtons.fire({
+        position: 'top-end',
+        icon: 'success',
+        title: 'Item added successfully',
+        showConfirmButton: false,
+        timer: 1500,
+      });
+    }
   };
 
   return (
@@ -97,8 +115,9 @@ const Login = () => {
           <div className='text-center md:text-left'>
             <button
               className='mt-4 bg-cyan-600  hover:bg-cyan-300 hover:text-cyan-700 text-cyan-200 px-4 py-2 font-semibold uppercase rounded text-xs tracking-wider'
+              disabled={isLoading}
               type='submit'>
-              Login
+              {isLoading ? 'Loading...' : 'Login'}
             </button>
           </div>
         </form>
@@ -127,7 +146,7 @@ const Login = () => {
             special character.
           </p>
         )}
-        {firebaseError && <p className='text-red-600'>{firebaseError}</p>}
+        {error && <errorComponent>{error}</errorComponent>}
       </div>
     </section>
   );
