@@ -72,7 +72,7 @@ export const router = createBrowserRouter([
       {
         path: 'all-courses',
         element: <AllCourses></AllCourses>,
-        loader: () => fetch(`${import.meta.env.VITE_API}/courses`),
+        // loader: () => fetch(`${import.meta.env.VITE_API}/courses`),
       },
       {
         path: 'dashboard',

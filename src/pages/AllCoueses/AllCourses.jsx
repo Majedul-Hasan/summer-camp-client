@@ -2,9 +2,16 @@ import { useLoaderData } from 'react-router-dom';
 
 import CourseCard from '../Shared/Cards/CourseCard';
 import { Helmet } from 'react-helmet-async';
+import { useGetAllCoursesQuery } from '../../features/courses/coursesApi';
 
 const AllCourses = () => {
-  const courses = useLoaderData();
+  const {
+    isError,
+    isFetching,
+    isLoading,
+    data: courses,
+  } = useGetAllCoursesQuery({});
+  // const courses = useLoaderData();
   console.log(courses);
   return (
     <>
