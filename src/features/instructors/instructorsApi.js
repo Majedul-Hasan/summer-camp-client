@@ -1,4 +1,5 @@
 import { apiSlice } from '../api/apiSlice';
+import { allInstructors, popularInstructors } from './instructorsSlice';
 
 export const instructorsApi = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
@@ -14,7 +15,7 @@ export const instructorsApi = apiSlice.injectEndpoints({
         try {
           const result = await queryFulfilled;
           console.log(result);
-          //   dispatch(allCourses(result.data));
+          dispatch(allInstructors(result.data));
         } catch (error) {
           console.log(error);
         }
@@ -34,7 +35,7 @@ export const instructorsApi = apiSlice.injectEndpoints({
         try {
           const result = await queryFulfilled;
           console.log(result);
-          //   dispatch(popularCourses(result.data));
+          dispatch(popularInstructors(result.data));
         } catch (error) {
           console.log(error);
         }
