@@ -1,26 +1,31 @@
+import { useSelector, useDispatch } from 'react-redux';
 import { motion } from 'framer-motion';
 import { FaShoppingCart } from 'react-icons/fa';
+import { useState } from 'react';
+
+import { userLoggedOut } from '../../../features/auth/authSlice';
+import { usePersistUserQuery } from '../../../features/auth/authApi';
 import { NavLink, useNavigate } from 'react-router-dom';
 import logo from '../../../assets/letnja-skola.png';
 import logoDark from '../../../assets/letnja-skola-dark.png';
 
 import useAuth from '../../../hooks/useAuth';
-import { useEffect, useState } from 'react';
 import useAdmin from '../../../hooks/useAdmin';
 import useAxiosSecure from '../../../hooks/useAxiosSecure';
 import useCart from '../../../hooks/useCart';
-import { usePersistUserQuery } from '../../../features/auth/authApi';
 
 const NavBar = () => {
-  const { user, logOut, setIsDarkMode, isDarkMode } = useAuth();
+  const dispatch = useDispatch();
+  const { setIsDarkMode, isDarkMode } = useAuth();
   const [cart] = useCart();
   const navigate = useNavigate();
-  const [role] = useAdmin();
+
   const [pendingNumber, setPendingNumber] = useState();
-  const [axiosSecure] = useAxiosSecure();
 
   const { isError, isFetching, isLoading, isSuccess, data } =
     usePersistUserQuery();
+
+  const { user } = useSelector((state) => state.auth);
 
   const [isOn, setIsOn] = useState(false);
   const toggleSwitch = () => {
@@ -31,16 +36,16 @@ const NavBar = () => {
   const handleThemeSwitch = () => {
     setIsDarkMode((darkMode) => !darkMode);
   };
-  useEffect(() => {
-    if (role?.role === 'admin') {
-      axiosSecure
-        .get(`${import.meta.env.VITE_API}/course/admin/pending`)
-        .then((data) => {
-          console.log(data);
-          setPendingNumber(data.data.pending);
-        });
-    }
-  }, [role, axiosSecure]);
+  // useEffect(() => {
+  //   if (role?.role === 'admin') {
+  //     axiosSecure
+  //       .get(`${import.meta.env.VITE_API}/course/admin/pending`)
+  //       .then((data) => {
+  //         console.log(data);
+  //         setPendingNumber(data.data.pending);
+  //       });
+  //   }
+  // }, [role, axiosSecure]);
 
   const spring = {
     type: 'spring',
@@ -49,11 +54,11 @@ const NavBar = () => {
   };
 
   const handleLogOut = () => {
-    logOut()
-      .then(() => {
-        navigate('/');
-      })
-      .catch((error) => console.log(error));
+    console.log('object is destroyed');
+    dispatch(userLoggedOut());
+    localStorage.clear();
+
+    navigate('/');
   };
 
   const navOptions = (
@@ -71,7 +76,7 @@ const NavBar = () => {
         <NavLink to='/events'>All events </NavLink>
       </li>
       <li>
-        {role?.role === 'admin' ? (
+        {user?.role.includes('admin') ? (
           <NavLink to='/dashboard/admin-home'>
             <span>
               Dashboard{' '}
@@ -80,9 +85,9 @@ const NavBar = () => {
               </span>
             </span>
           </NavLink>
-        ) : role?.role === 'instructor' ? (
+        ) : user?.role.includes('instructor') ? (
           <NavLink to='/dashboard/instructor-home'>Dashboard</NavLink>
-        ) : role?.role === 'student' ? (
+        ) : user?.role.includes('subscriber') ? (
           <NavLink to='/dashboard/student-home'>Dashboard</NavLink>
         ) : null}
       </li>
@@ -101,7 +106,7 @@ const NavBar = () => {
       {user ? (
         <>
           <li>
-            <NavLink to='/profile'>{user?.displayName}</NavLink>
+            <NavLink to='/profile'>{user?.name}</NavLink>
           </li>
           <li className='flex items-center'>
             <span onClick={handleLogOut}>LogOut</span>
