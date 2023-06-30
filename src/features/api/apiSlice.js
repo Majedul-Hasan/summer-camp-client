@@ -3,7 +3,9 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 const baseQuery = fetchBaseQuery({
   baseUrl: import.meta.env.VITE_API,
   prepareHeaders: async (headers, { getState, endpoint }) => {
-    const token = getState()?.auth?.accessToken;
+    const token =
+      getState()?.auth?.accessToken ||
+      localStorage.getItem('school-access-token');
     if (token) {
       headers.set('Authorization', `Bearer ${token}`);
     }

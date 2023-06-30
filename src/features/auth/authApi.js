@@ -47,6 +47,28 @@ export const authApi = apiSlice.injectEndpoints({
         }
       },
     }),
+
+    persistUser: builder.query({
+      query: (data) => ({
+        url: '/users/current-user',
+        method: 'GET',
+      }),
+      async onQueryStarted(arg, { queryFulfilled, dispatch }) {
+        try {
+          const result = await queryFulfilled;
+          console.log(result);
+          localStorage.setItem('school-access-token', result.data.token);
+          dispatch(
+            userLoggedIn({
+              accessToken: result.data.token,
+              user: result.data.user,
+            })
+          );
+        } catch (error) {
+          console.log(error);
+        }
+      },
+    }),
   }),
 });
 
