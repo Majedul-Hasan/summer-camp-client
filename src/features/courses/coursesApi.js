@@ -23,7 +23,7 @@ export const courseApi = apiSlice.injectEndpoints({
     }),
     getPopularCourses: builder.query({
       query: ({ limit }) => {
-        const limitQ = limit ? `/courses?limit=${limit}` : '/courses';
+        const limitQ = limit ? `/courses?limit=${limit}` : '/courses?limit=6';
         return {
           url: limitQ,
           method: 'GET',
