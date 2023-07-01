@@ -8,9 +8,9 @@ import PopularCourses from '../PopularCourses/PopularCourses';
 import PopularInstructors from '../PopularInstructors/PopularInstructors';
 import LearningPath from '../LearningPath/LearningPath';
 import LearningSolutions from '../LearningSolutions/LearningSolutions';
+import BecomeStudent from '../BecomeStudent/BecomeStudent';
 
 const HomePage = () => {
- 
   return (
     <>
       <Helmet>
@@ -20,6 +20,7 @@ const HomePage = () => {
       <PopularCourses />
       <LearningPath />
       <LearningSolutions />
+      <BecomeStudent />
       <PopularInstructors />
       <Events />
       <Testimonials />

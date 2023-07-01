@@ -5,7 +5,7 @@ export const instructorsApi = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
     getAllInstructors: builder.query({
       query: ({ limit }) => {
-        const limitQ = limit ? `/instructors?limit=${limit}` : '/courses';
+        const limitQ = limit ? `/instructors?limit=${limit}` : '/instructors';
         return {
           url: limitQ,
           method: 'GET',
@@ -25,7 +25,7 @@ export const instructorsApi = apiSlice.injectEndpoints({
       query: ({ limit }) => {
         const limitQ = limit
           ? `/instructors?limit=${limit}`
-          : '/courses?limit=6';
+          : '/instructors?limit=6';
         return {
           url: limitQ,
           method: 'GET',
